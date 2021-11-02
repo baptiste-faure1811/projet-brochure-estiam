@@ -25,8 +25,9 @@ export class EntrepriseService {
     const entrepriseData = new FormData();
     entrepriseData.append("name", name);
    
-
-    return this.http.post<Entreprise>(this.url, entrepriseData)
+    const newEntreprise = { name: name } as Entreprise;
+    console.log("newEntreprise : " + newEntreprise.name);
+    return this.http.post<Entreprise>(this.url, newEntreprise)
 
 
       // .subscribe((entrepriseData) => {
