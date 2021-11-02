@@ -22,7 +22,7 @@ export class EntrepriseComponent implements OnInit {
   }
 
   addEntreprise(name: string): void {
-    this.entrepriseService.addEntreprise(name).subscribe();
+    this.entrepriseService.addEntreprise(name).subscribe(entreprise => this.entreprises.push(entreprise));
   }
 
   deleteEntreprise(entreprise: Entreprise) {
@@ -32,6 +32,5 @@ export class EntrepriseComponent implements OnInit {
   updateEntreprise(newName: string, id: string) {
     this.entrepriseService.updateEntreprise(newName, id).subscribe();
   }
-  
 
 }
