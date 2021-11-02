@@ -27,8 +27,16 @@ export class EntrepriseService {
   }
 
   deleteEntreprise(entreprise: Entreprise): Observable<Entreprise> {
-    const newURl = "http://localhost:3000/entreprises/" + entreprise._id;
+    const newURl = this.url + "/" + entreprise._id;
     return this.http.delete<Entreprise>(newURl);
+  }
+
+  updateEntreprise(newName: string, id: string): Observable<Entreprise> {
+    console.log("NEW NAME : " + newName);
+    console.log("ID TO EDIT : " + id);
+
+    const updatedEntreprise = { name: newName, _id: id } as Entreprise;
+    return this.http.put<Entreprise>(this.url, updatedEntreprise);
   }
 
 }

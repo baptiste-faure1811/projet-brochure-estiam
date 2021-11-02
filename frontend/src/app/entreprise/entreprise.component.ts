@@ -29,6 +29,9 @@ export class EntrepriseComponent implements OnInit {
     this.entrepriseService.deleteEntreprise(entreprise).subscribe();
   }
 
+  updateEntreprise(newName: string, id: string) {
+    this.entrepriseService.updateEntreprise(newName, id).subscribe();
+  }
   
 
 }
