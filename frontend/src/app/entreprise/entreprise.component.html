@@ -1,0 +1,18 @@
+
+<p>entreprise works!</p>
+
+<ul class="">
+    <li *ngFor="let entreprise of entreprises">
+        {{entreprise.name}}
+    </li>
+</ul>
+
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #entrepriseName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="addEntreprise(entrepriseName.value); entrepriseName.value=''">
+    Add entreprise
+  </button>
+</div>
