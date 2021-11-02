@@ -1,9 +1,10 @@
 
-<p>entreprise works!</p>
-
 <ul class="">
     <li *ngFor="let entreprise of entreprises">
         {{entreprise.name}}
+        <button (click)="deleteEntreprise(entreprise)">
+            Supprimer
+        </button>
     </li>
 </ul>
 

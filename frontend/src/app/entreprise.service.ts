@@ -22,22 +22,13 @@ export class EntrepriseService {
   }
 
   addEntreprise(name: string) : Observable<Entreprise> {
-    const entrepriseData = new FormData();
-    entrepriseData.append("name", name);
-   
     const newEntreprise = { name: name } as Entreprise;
-    console.log("newEntreprise : " + newEntreprise.name);
     return this.http.post<Entreprise>(this.url, newEntreprise)
+  }
 
-
-      // .subscribe((entrepriseData) => {
-      //   const entreprise: Entreprise = {
-      //     _id: entrepriseData.entreprise._id,
-      //     name: name,
-      //   };
-      //   this.entreprises.push(entreprise);
-      //   this.entreprises$.next(this.entreprises);
-      // });
+  deleteEntreprise(entreprise: Entreprise): Observable<Entreprise> {
+    const newURl = "http://localhost:3000/entreprises/" + entreprise._id;
+    return this.http.delete<Entreprise>(newURl);
   }
 
 }

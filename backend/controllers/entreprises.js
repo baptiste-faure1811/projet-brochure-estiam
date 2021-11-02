@@ -1,4 +1,6 @@
 const Entreprise = require('../models/entreprise');
+const mongoose = require('mongoose');
+const { ObjectId } = require('bson');
 
 module.exports.getEntreprises = async (req, res) => {
   const entreprises = await Entreprise.find();
@@ -8,27 +10,30 @@ module.exports.getEntreprises = async (req, res) => {
 };
 
 module.exports.postEntreprise = async (req, res) => {
-    //const name = req.body.name;
+   
     res.setHeader("Access-Control-Allow-Origin","*");
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.status(200);
-    //res.send(JSON.stringify(entreprises));
-    console.log("REQ: " + req.body.name);
+ 
     const entreprise = new Entreprise({
+      _id: ObjectId(),
       name: req.body.name
     });
     const createdEntreprise = await entreprise.save();
-    // Header set Access-Control-Allow-Origin "*"
-    //res.setHeader("Access-Control-Allow-Origin","*");
-    // res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-    //res.status(200);
+};
 
-    // res.send(JSON.stringify(entreprises));
-    // res.status(200).json({
-    //     entreprise: {
-    //     ...createdEntreprise._doc,
-    //   },
-    // });
+module.exports.deleteEntreprise = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.status(200);
+  const id = req.params.deleteID; 
+
+  Entreprise.deleteOne({ _id: id })
+  .then(() => {
+    console.log("Success")
+  })
+  .catch((err) => console.log(`Could not delete entreprise with id ${id}`, err));
+
 };

@@ -22,7 +22,11 @@ export class EntrepriseComponent implements OnInit {
   }
 
   addEntreprise(name: string): void {
-    this.entrepriseService.addEntreprise(name).subscribe(entreprise => this.entreprises.push(entreprise));
+    this.entrepriseService.addEntreprise(name).subscribe();
+  }
+
+  deleteEntreprise(entreprise: Entreprise) {
+    this.entrepriseService.deleteEntreprise(entreprise).subscribe();
   }
 
   
