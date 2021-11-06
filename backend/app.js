@@ -5,6 +5,7 @@ const connexion = require ('./connexion');
 
 const entrepriseRoutes = require('./routes/entreprise.route');
 const programmeRoutes = require('./routes/programme.route');
+const groupeRoutes = require('./routes/groupe.route');
 
 const server = require('./server');
 
@@ -14,4 +15,5 @@ server.use(express.urlencoded({
 
 server.use('/entreprises', entrepriseRoutes);
 server.use('/programmes', programmeRoutes);
+server.use('/groupes', groupeRoutes);
 
