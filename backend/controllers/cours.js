@@ -43,10 +43,9 @@ module.exports.getSingleCours = async (req, res) => {
     
     // Check if null
     if (cours == undefined || cours == null) {
-        const errorDescription = 'No Cours with _id: ' + coursID;
-        console.log(errorDescription);
-        res.status(500);
-        res.send(errorDescription);
+        // If no result, result empty JSON
+        console.log('No Cours with _id: ' + coursID);
+        res.send(JSON.stringify({}));
         return;
     } else {
         // Remove unnecessary properties
@@ -80,10 +79,9 @@ module.exports.getCoursByDomaineID = async (req, res) => {
     
     // Check if null
     if (cours == undefined || cours == null || cours.length == 0) {
-        const errorDescription = 'No Cours with domaineID: ' + domaineID;
-        console.log(errorDescription);
-        res.status(500);
-        res.send(errorDescription);
+        // If no result, result empty JSON
+        console.log('No Cours with domaineID: ' + domaineID);
+        res.send(JSON.stringify([]));
         return;
     } else {
         // Remove unnecessary properties

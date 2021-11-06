@@ -1,8 +1,12 @@
 const Groupe = require('../models/groupe');
 const mongoose = require('mongoose');
 const { ObjectId } = require('bson');
+const r2 = require('r2');
 
 module.exports.getGroupes = async (req, res) => {
+
+    // Get hostname
+    const hostname = req.headers.host;
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -15,6 +19,21 @@ module.exports.getGroupes = async (req, res) => {
     groupes.forEach(groupe => {
         delete groupe.__v;
     });
+
+    // Check weather to return only groupes or full details
+    const getFullDetails = req.query.getFullDetails === 'true';
+    if (getFullDetails) {
+        for (const groupe of groupes) {
+            await r2("http://" + hostname + "/uniteEnseignements/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+            .then((data) => {
+              groupe.uniteEnseignements = data;
+            }).catch(err => {
+                res.status(500);
+                console.log(err.message);
+                res.send(err.message);
+            });
+        }
+    }
   
     // Return response
     res.status(200);
@@ -22,6 +41,9 @@ module.exports.getGroupes = async (req, res) => {
 };
 
 module.exports.getGroupe = async (req, res) => {
+
+  // Get hostname
+  const hostname = req.headers.host;
     
   // Set headers
   res.setHeader("Access-Control-Allow-Origin","*");
@@ -40,25 +62,39 @@ module.exports.getGroupe = async (req, res) => {
 
   // Get groupe from database with mathing _id
   const groupe = await Groupe.findOne({ _id: groupeID }).lean();
-  
-  // Check if null
+
+  res.status(200);
   if (groupe == undefined || groupe == null) {
-      const errorDescription = 'No Groupe with _id: ' + groupeID;
-      console.log(errorDescription);
-      res.status(500);
-      res.send(errorDescription);
+      // If no result, result empty JSON
+      console.log('No Groupe with _id: ' + groupeID);
+      res.send(JSON.stringify({}));
       return;
   } else {
       // Remove unnecessary properties
       delete groupe.__v;
 
+      // Check weather to return only the groupe or full details
+      const getFullDetails = req.query.getFullDetails === 'true';
+      if (getFullDetails) {
+          await r2("http://" + hostname + "/uniteEnseignements/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+          .then((data) => {
+            groupe.uniteEnseignements = data;
+          }).catch(err => {
+              res.status(500);
+              console.log(err.message);
+              res.send(err.message);
+          });
+      }
+
       // Return response
-      res.status(200);
       res.send(JSON.stringify(groupe));
   }
 };
 
 module.exports.getGroupeByProgrammeID = async (req, res) => {
+
+  // Get hostname
+  const hostname = req.headers.host;
     
   // Set headers
   res.setHeader("Access-Control-Allow-Origin","*");
@@ -77,13 +113,12 @@ module.exports.getGroupeByProgrammeID = async (req, res) => {
 
   // Get all groupes from database with matching programmeID
   const groupes = await Groupe.find({ programme: programmeID }).lean();
-  
-  // Check if null
+
+  res.status(200);
   if (groupes == undefined || groupes == null || groupes.length == 0) {
-      const errorDescription = 'No Groupe with programmeID: ' + programmeID;
-      console.log(errorDescription);
-      res.status(500);
-      res.send(errorDescription);
+      // If no result, result empty JSON
+      console.log('No Groupe with programmeID: ' + programmeID);
+      res.send(JSON.stringify([]));
       return;
   } else {
       // Remove unnecessary properties
@@ -91,8 +126,22 @@ module.exports.getGroupeByProgrammeID = async (req, res) => {
         delete groupe.__v;
       });
 
+      // Check weather to return only groupes or full details
+      const getFullDetails = req.query.getFullDetails === 'true';
+      if (getFullDetails) {
+          for (const groupe of groupes) {
+              await r2("http://" + hostname + "/uniteEnseignements/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+              .then((data) => {
+                groupe.uniteEnseignements = data;
+              }).catch(err => {
+                  res.status(500);
+                  console.log(err.message);
+                  res.send(err.message);
+              });
+          }
+      }
+
       // Return response
-      res.status(200);
       res.send(JSON.stringify(groupes));
   }
 };

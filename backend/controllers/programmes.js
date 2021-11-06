@@ -7,7 +7,7 @@ module.exports.getProgrammes = async (req, res) => {
 
     // Get hostname
     const hostname = req.headers.host;
-
+    
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
     res.setHeader('Content-Type', 'application/json');
@@ -15,19 +15,25 @@ module.exports.getProgrammes = async (req, res) => {
     // Get all programmes from database
     const programmes = await Programme.find().lean();
 
-    // Check weather to return only programmes or full details
-    // const getFullDetails = req.query.getFullDetails === 'true';
-    // if (getFullDetails) {
-
-
-    // } else {
-        
-    // }
-
     // Remove unnecessary properties
     programmes.forEach(programme => {
         delete programme.__v;
     });
+
+    // Check weather to return only programmes or full details
+    const getFullDetails = req.query.getFullDetails === 'true';
+    if (getFullDetails) {
+        for (const programme of programmes) {
+            await r2("http://" + hostname + "/groupes/programmeID/" + programme._id + "?getFullDetails=" + getFullDetails).json
+            .then((data) => {
+                programme.groupes = data;
+            }).catch(err => {
+                res.status(500);
+                console.log(err.message);
+                res.send(err.message);
+            });
+        }
+    }
 
     // Return response
     res.status(200);

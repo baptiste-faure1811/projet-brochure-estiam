@@ -1,8 +1,12 @@
 const Domaine = require('../models/domaine');
 const mongoose = require('mongoose');
 const { ObjectId } = require('bson');
+const r2 = require('r2');
 
 module.exports.getDomaines = async (req, res) => {
+
+    // Get hostname
+    const hostname = req.headers.host;
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -15,6 +19,21 @@ module.exports.getDomaines = async (req, res) => {
     domaines.forEach(domaine => {
         delete domaine.__v;
     });
+
+    // Check weather to return only unites or full details
+    const getFullDetails = req.query.getFullDetails === 'true';
+    if (getFullDetails) {
+        for (const domaine of domaines) {
+            await r2("http://" + hostname + "/cours/domaineID/").json
+            .then((data) => {
+                domaine.cours = data;
+            }).catch(err => {
+                res.status(500);
+                console.log(err.message);
+                res.send(err.message);
+            });
+        }
+    }
   
     // Return response
     res.status(200);
@@ -22,6 +41,9 @@ module.exports.getDomaines = async (req, res) => {
 };
 
 module.exports.getDomaine = async (req, res) => {
+
+    // Get hostname
+    const hostname = req.headers.host;
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -43,14 +65,26 @@ module.exports.getDomaine = async (req, res) => {
     
     // Check if null
     if (domaine == undefined || domaine == null) {
-        const errorDescription = 'No Domaine with _id: ' + domaineID;
-        console.log(errorDescription);
-        res.status(500);
-        res.send(errorDescription);
+        // If no result, result empty JSON
+        console.log('No Domaine with _id: ' + domaineID);
+        res.send(JSON.stringify({}));
         return;
     } else {
         // Remove unnecessary properties
         delete domaine.__v;
+
+        // Check weather to return only unites or full details
+        const getFullDetails = req.query.getFullDetails === 'true';
+        if (getFullDetails) {
+            await r2("http://" + hostname + "/cours/domaineID/" + domaine._id).json
+                .then((data) => {
+                    domaine.cours = data;
+                }).catch(err => {
+                    res.status(500);
+                    console.log(err.message);
+                    res.send(err.message);
+                });
+        }
   
         // Return response
         res.status(200);
@@ -59,6 +93,9 @@ module.exports.getDomaine = async (req, res) => {
 };
 
 module.exports.getDomainesByUniteEnseignementID = async (req, res) => {
+
+    // Get hostname
+    const hostname = req.headers.host;
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -80,16 +117,30 @@ module.exports.getDomainesByUniteEnseignementID = async (req, res) => {
     
     // Check if null
     if (domaines == undefined || domaines == null || domaines.length == 0) {
-        const errorDescription = 'No Domaine with uniteEnseignementID: ' + uniteEnseignementID;
-        console.log(errorDescription);
-        res.status(500);
-        res.send(errorDescription);
+        // If no result, result empty JSON
+        console.log('No Domaine with uniteEnseignementID: ' + uniteEnseignementID);
+        res.send(JSON.stringify([]));
         return;
     } else {
         // Remove unnecessary properties
         domaines.forEach(domaine => {
           delete domaine.__v;
         });
+
+        // Check weather to return only unites or full details
+        const getFullDetails = req.query.getFullDetails === 'true';
+        if (getFullDetails) {
+            for (const domaine of domaines) {
+                await r2("http://" + hostname + "/cours/domaineID/" + domaine._id).json
+                .then((data) => {
+                    domaine.cours = data;
+                }).catch(err => {
+                    res.status(500);
+                    console.log(err.message);
+                    res.send(err.message);
+                });
+            }
+        }
   
         // Return response
         res.status(200);
