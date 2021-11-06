@@ -9,7 +9,7 @@ module.exports.getProgrammes = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
     // Get all programmes from database
-    const programmes = await Programme.find().lean()
+    const programmes = await Programme.find().lean();
 
     // Remove unnecessary properties
     programmes.forEach(programme => {
@@ -41,7 +41,7 @@ module.exports.postProgramme = async (req, res) => {
     // Save new object to database
     await programme.save()
     .then(() => {
-        // Creation was successfull
+        // Creation was successful
         res.status(200);
         console.log("Progamme successfully created with _id: " + programme._id)
         res.send(JSON.stringify(programme));

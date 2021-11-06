@@ -4,7 +4,7 @@ const { ObjectId } = require('bson');
 
 module.exports.getGroupes = async (req, res) => {
     
-  // Set headers
+    // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
     res.setHeader('Content-Type', 'application/json');
   
@@ -41,7 +41,7 @@ module.exports.postGroupe = async (req, res) => {
     // Save new object to database
     await groupe.save()
     .then(() => {
-        // Creation was successfull
+        // Creation was successful
         res.status(200);
         console.log("Groupe successfully created with _id: " + groupe._id)
         res.send(JSON.stringify(groupe));
