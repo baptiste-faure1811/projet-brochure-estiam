@@ -27,18 +27,74 @@ module.exports.getGroupe = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader('Content-Type', 'application/json');
 
-  // Get id from parameter
-  const id = req.params.groupeID; 
+  // Get id from parameter and check if valid
+  if (ObjectId.isValid(req.params.groupeID) == false) {
+      // Invalid Id
+      const errorDescription = 'Please provide a valid _id.';
+      console.log(errorDescription);
+      res.status(500);
+      res.send(errorDescription);
+      return;
+  }
+  const groupeID = req.params.groupeID;
 
-  // Get all groupes from database
-  const groupe = await Groupe.findOne({ _id: id }).lean();
+  // Get groupe from database with mathing _id
+  const groupe = await Groupe.findOne({ _id: groupeID }).lean();
+  
+  // Check if null
+  if (groupe == undefined || groupe == null) {
+      const errorDescription = 'No Groupe with _id: ' + groupeID;
+      console.log(errorDescription);
+      res.status(500);
+      res.send(errorDescription);
+      return;
+  } else {
+      // Remove unnecessary properties
+      delete groupe.__v;
 
-  // Remove unnecessary properties
-  delete groupe.__v;
+      // Return response
+      res.status(200);
+      res.send(JSON.stringify(groupe));
+  }
+};
 
-  // Return response
-  res.status(200);
-  res.send(JSON.stringify(groupe));
+module.exports.getGroupeByProgrammeID = async (req, res) => {
+    
+  // Set headers
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader('Content-Type', 'application/json');
+
+  // Get id from parameter and check if valid
+  if (ObjectId.isValid(req.params.programmeID) == false) {
+      // Invalid Id
+      const errorDescription = 'Please provide a valid programmeID.';
+      console.log(errorDescription);
+      res.status(500);
+      res.send(errorDescription);
+      return;
+  }
+  const programmeID = req.params.programmeID;
+
+  // Get all groupes from database with matching programmeID
+  const groupes = await Groupe.find({ programme: programmeID }).lean();
+  
+  // Check if null
+  if (groupes == undefined || groupes == null || groupes.length == 0) {
+      const errorDescription = 'No Groupe with programmeID: ' + programmeID;
+      console.log(errorDescription);
+      res.status(500);
+      res.send(errorDescription);
+      return;
+  } else {
+      // Remove unnecessary properties
+      groupes.forEach(groupe => {
+        delete groupe.__v;
+      });
+
+      // Return response
+      res.status(200);
+      res.send(JSON.stringify(groupes));
+  }
 };
 
 module.exports.postGroupe = async (req, res) => {

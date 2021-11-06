@@ -16,16 +16,18 @@ module.exports.getProgrammes = async (req, res) => {
     const programmes = await Programme.find().lean();
 
     // Check weather to return only programmes or full details
-    const getFullDetails = req.query.getFullDetails === 'true';
-    if (getFullDetails) {
+    // const getFullDetails = req.query.getFullDetails === 'true';
+    // if (getFullDetails) {
 
 
-    } else {
-        // Remove unnecessary properties
-        programmes.forEach(programme => {
-            delete programme.__v;
-        });
-    }
+    // } else {
+        
+    // }
+
+    // Remove unnecessary properties
+    programmes.forEach(programme => {
+        delete programme.__v;
+    });
 
     // Return response
     res.status(200);
