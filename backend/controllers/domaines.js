@@ -24,7 +24,7 @@ module.exports.getDomaines = async (req, res) => {
     const getFullDetails = req.query.getFullDetails === 'true';
     if (getFullDetails) {
         for (const domaine of domaines) {
-            await r2("http://" + hostname + "/cours/domaineID/").json
+            await r2("http://" + hostname + "/cours/domaineID/" + domaine._id).json
             .then((data) => {
                 domaine.cours = data;
             }).catch(err => {
