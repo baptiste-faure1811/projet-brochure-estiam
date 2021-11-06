@@ -13,13 +13,32 @@ module.exports.getGroupes = async (req, res) => {
 
     // Remove unnecessary properties
     groupes.forEach(groupe => {
-        delete groupe.uniteEnseignement;
         delete groupe.__v;
     });
   
     // Return response
     res.status(200);
     res.send(JSON.stringify(groupes));
+};
+
+module.exports.getGroupe = async (req, res) => {
+    
+  // Set headers
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader('Content-Type', 'application/json');
+
+  // Get id from parameter
+  const id = req.params.groupeID; 
+
+  // Get all groupes from database
+  const groupe = await Groupe.findOne({ _id: id }).lean();
+
+  // Remove unnecessary properties
+  delete groupe.__v;
+
+  // Return response
+  res.status(200);
+  res.send(JSON.stringify(groupe));
 };
 
 module.exports.postGroupe = async (req, res) => {
@@ -35,7 +54,7 @@ module.exports.postGroupe = async (req, res) => {
       name: "Groupe Name",
       totalECTS: 60,
       totalDuration: 130,
-      uniteEnseignement: []
+      programme: ObjectId()
     });
     
     // Save new object to database

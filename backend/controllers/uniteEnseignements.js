@@ -13,7 +13,6 @@ module.exports.getUniteEnseignements = async (req, res) => {
 
     // Remove unnecessary properties
     uniteEnseignements.forEach(unite => {
-        delete unite.domaines;
         delete unite.__v;
     });
   
@@ -35,7 +34,7 @@ module.exports.postUniteEnseignement = async (req, res) => {
       name: "UniteEnseignement Name",
       code: "someCode",
       totalDuration: 130,
-      domaines: []
+      groupe: ObjectId()
     });
     
     // Save new object to database

@@ -30,6 +30,10 @@ const coursSchema = mongoose.Schema({
     duration: {
         type: Number,
         required: true
+    },
+    domaine: {
+        type: ObjectId,
+        required: true
     }
 });
 

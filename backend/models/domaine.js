@@ -11,11 +11,10 @@ const domaineSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    cours: {
-        type: [ObjectId],
-        required: true,
-        default: []
-    },
+    uniteEnseignement: {
+        type: ObjectId,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Domaine', domaineSchema);

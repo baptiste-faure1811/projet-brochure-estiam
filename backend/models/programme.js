@@ -18,12 +18,7 @@ const programmeSchema = mongoose.Schema({
     totalDuration: {
         type: Number,
         required: true
-    },
-    groups: {
-        type: [ObjectId],
-        required: true,
-        default: []
-    },
+    }
 });
 
 module.exports = mongoose.model('Programme', programmeSchema);

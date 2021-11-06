@@ -19,10 +19,9 @@ const uniteEnseignementSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    domaines: {
-        type: [ObjectId],
-        required: true,
-        default: []
-    },
+    groupe: {
+        type: ObjectId,
+        required: true
+    }
 });
 module.exports = mongoose.model('unite_enseignements', uniteEnseignementSchema,'unite_enseignements');

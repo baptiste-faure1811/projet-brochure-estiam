@@ -19,11 +19,10 @@ const groupeSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    uniteEnseignement: {
-        type: [ObjectId],
-        required: true,
-        default: []
-    },
+    programme: {
+        type: ObjectId,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Groupe', groupeSchema);

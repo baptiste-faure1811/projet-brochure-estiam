@@ -36,7 +36,8 @@ module.exports.postCours = async (req, res) => {
       ECTSCode: "ECTS Code",
       oldCode: "Some Old Code",
       semestre: 1,
-      duration: 120
+      duration: 120,
+      domaine: ObjectId()
     });
     
     // Save new object to database

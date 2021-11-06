@@ -13,7 +13,6 @@ module.exports.getDomaines = async (req, res) => {
 
     // Remove unnecessary properties
     domaines.forEach(domaine => {
-        delete domaine.cours;
         delete domaine.__v;
     });
   
@@ -33,7 +32,7 @@ module.exports.postDomaine = async (req, res) => {
     const domaine = new Domaine({
       _id: ObjectId(),
       name: "Domaine Name",
-      cours: []
+      uniteEnseignement: ObjectId()
     });
     
     // Save new object to database
