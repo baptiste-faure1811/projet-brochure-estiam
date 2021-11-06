@@ -27,6 +27,7 @@ module.exports.postEntreprise = async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin","*");
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Content-Type', 'application/json');
  
     // Create new object to save using data from parameters
     const entreprise = new Entreprise({
@@ -57,6 +58,7 @@ module.exports.deleteEntreprise = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Content-Type', 'application/json');
 
   // Get id from paramater
   const id = req.params.deleteID; 
@@ -76,7 +78,7 @@ module.exports.deleteEntreprise = async (req, res) => {
       // Deletion was successful
       res.status(200);
       console.log("Entreprise with _id " + id + " successfully deleted");
-      res.send(JSON.stringify(groupe));
+      res.send(JSON.stringify([]));
   })
   .catch(err => {
       // An error occured
@@ -102,7 +104,7 @@ module.exports.updateEntreprise = async (req, res) => {
       // Update was successful
       res.status(200);
       console.log("Entreprise with _id " + req.body._id + " successfully updated");
-      res.send(JSON.stringify(groupe));
+      res.send(JSON.stringify([]));
   })
   .catch(err => {
       // An error occured while updating

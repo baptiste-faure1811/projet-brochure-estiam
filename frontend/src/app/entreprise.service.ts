@@ -32,9 +32,6 @@ export class EntrepriseService {
   }
 
   updateEntreprise(newName: string, id: string): Observable<Entreprise> {
-    console.log("NEW NAME : " + newName);
-    console.log("ID TO EDIT : " + id);
-
     const updatedEntreprise = { name: newName, _id: id } as Entreprise;
     return this.http.put<Entreprise>(this.url, updatedEntreprise);
   }
