@@ -21,6 +21,82 @@ module.exports.getCours = async (req, res) => {
     res.send(JSON.stringify(cours));
 };
 
+module.exports.getSingleCours = async (req, res) => {
+    
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Content-Type', 'application/json');
+  
+    // Get id from parameter and check if valid
+    if (ObjectId.isValid(req.params.coursID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid _id.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+    const coursID = req.params.coursID;
+  
+    // Get Domaine from database with mathing _id
+    const cours = await Cours.findOne({ _id: coursID }).lean();
+    
+    // Check if null
+    if (cours == undefined || cours == null) {
+        const errorDescription = 'No Cours with _id: ' + coursID;
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    } else {
+        // Remove unnecessary properties
+        delete cours.__v;
+  
+        // Return response
+        res.status(200);
+        res.send(JSON.stringify(cours));
+    }
+};
+
+module.exports.getCoursByDomaineID = async (req, res) => {
+    
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Content-Type', 'application/json');
+  
+    // Get id from parameter and check if valid
+    if (ObjectId.isValid(req.params.domaineID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid domaineID.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+    const domaineID = req.params.domaineID;
+  
+    // Get all domaines from database with matching domaineID
+    const cours = await Cours.find({ domaine: domaineID }).lean();
+    
+    // Check if null
+    if (cours == undefined || cours == null || cours.length == 0) {
+        const errorDescription = 'No Cours with domaineID: ' + domaineID;
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    } else {
+        // Remove unnecessary properties
+        cours.forEach(singleCours => {
+          delete singleCours.__v;
+        });
+  
+        // Return response
+        res.status(200);
+        res.send(JSON.stringify(cours));
+    }
+};
+
 module.exports.postCours = async (req, res) => {
    
     // Set headers
