@@ -25,5 +25,4 @@ const uniteEnseignementSchema = mongoose.Schema({
         default: []
     },
 });
-
-module.exports = mongoose.model('UniteEnseignement', uniteEnseignementSchema);
+module.exports = mongoose.model('unite_enseignements', uniteEnseignementSchema,'unite_enseignements');
