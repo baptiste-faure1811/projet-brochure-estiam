@@ -21,12 +21,89 @@ module.exports.getUniteEnseignements = async (req, res) => {
     res.send(JSON.stringify(uniteEnseignements));
 };
 
+module.exports.getUniteEnseignement = async (req, res) => {
+    
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Content-Type', 'application/json');
+  
+    // Get id from parameter and check if valid
+    if (ObjectId.isValid(req.params.uniteID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid _id.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+    const uniteID = req.params.uniteID;
+  
+    // Get unite_enseignement from database with mathing _id
+    const unite = await UniteEnseignement.findOne({ _id: uniteID }).lean();
+    
+    // Check if null
+    if (unite == undefined || unite == null) {
+        const errorDescription = 'No UniteEnseignement with _id: ' + uniteID;
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    } else {
+        // Remove unnecessary properties
+        delete unite.__v;
+  
+        // Return response
+        res.status(200);
+        res.send(JSON.stringify(unite));
+    }
+};
+
+module.exports.getUniteEnseignementsByGroupeID = async (req, res) => {
+    
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Content-Type', 'application/json');
+  
+    // Get id from parameter and check if valid
+    if (ObjectId.isValid(req.params.groupeID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid groupeID.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+    const groupeID = req.params.groupeID;
+  
+    // Get all UniteEnseignement from database with matching groupeID
+    const uniteEnseignements = await UniteEnseignement.find({ groupe: groupeID }).lean();
+    
+    // Check if null
+    if (uniteEnseignements == undefined || uniteEnseignements == null || uniteEnseignements.length == 0) {
+        const errorDescription = 'No UniteEnseignement with groupeID: ' + groupeID;
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    } else {
+        // Remove unnecessary properties
+        uniteEnseignements.forEach(unite => {
+          delete unite.__v;
+        });
+  
+        // Return response
+        res.status(200);
+        res.send(JSON.stringify(uniteEnseignements));
+    }
+};
+
 module.exports.postUniteEnseignement = async (req, res) => {
    
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Content-Type', 'application/json');
  
     // Create new object to save using data from parameters
     const uniteEnseignement = new UniteEnseignement({

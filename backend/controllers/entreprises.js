@@ -94,6 +94,7 @@ module.exports.updateEntreprise = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin","*");
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Content-Type', 'application/json');
   
   // Update object from database
   Entreprise.updateOne({ _id: req.body._id }, { name: req.body.name })
