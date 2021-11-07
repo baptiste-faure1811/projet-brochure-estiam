@@ -21,6 +21,9 @@
             <p>details : {{paiement.paiementEchelonne.details}}</p>
             <div>
                 <button (click)="deletePaiement(paiement)">supprimer</button>
+                <a routerLink="/detail/{{paiement._id}}">
+                    Modifier
+                </a>
             </div>
     </li>
 </ul>

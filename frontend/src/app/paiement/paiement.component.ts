@@ -31,13 +31,14 @@ export class PaiementComponent implements OnInit {
     this.paiementService.deletePaiement(paiement).subscribe();
   }
 
-  updatePaiement(newName: string, id: string) {
-    this.paiementService.updatePaiement(newName, id).subscribe();
+  updatePaiement(newPaiement: Paiement) {
+    this.paiementService.updatePaiement(newPaiement).subscribe();
   }
 
   addPaie():void{
     this.paiementService.addPaiement("null").subscribe(paiement => this.paiements.push(paiement));
     console.log("addPaie")
   }
+
 
 }

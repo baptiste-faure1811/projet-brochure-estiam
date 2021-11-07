@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EntrepriseService } from './entreprise.service';
 import { PaiementComponent } from './paiement/paiement.component';
 import { PaiementDetailsComponent } from './paiement-details/paiement-details.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PaiementDetailsComponent } from './paiement-details/paiement-details.co
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [EntrepriseService],
   bootstrap: [AppComponent]

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Paiement } from "./paiement";
-import { Observable, Subject } from "rxjs";
-
+import { Observable, Subject, of} from "rxjs";
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,11 @@ export class PaiementService {
 
   getPaiements() : Observable<Paiement[]>{
     return this.http.get<Paiement[]>(this.url)
+  }
+
+  getPaiement(id: string): Observable<Paiement> {
+    const url = `${this.url}/detail/${id}`;
+    return this.http.get<Paiement>(url);
   }
 
   addPaiement(name: string) : Observable<Paiement> {
@@ -52,12 +57,28 @@ export class PaiementService {
     return this.http.delete<Paiement>(newURl);
   }
 
-  updatePaiement(newName: string, id: string): Observable<Paiement> {
-    // console.log("NEW NAME : " + newName);
-    // console.log("ID TO EDIT : " + id);
-
-    // const updatedPaiement = { name: newName, _id: id } as Paiement;
-    // return this.http.put<Paiement>(this.url, updatedPaiement);
-    return this.http.put<Paiement>(this.url, null);
+  updatePaiement(newPaiement: Paiement): Observable<Paiement> {
+    const updatedPaiement = {
+      exemple: {
+        nom: newPaiement.exemple.nom,
+        info: newPaiement.exemple.info
+      },
+      prixAnnuel: {
+        titre: newPaiement.prixAnnuel.titre,
+        prix: newPaiement.prixAnnuel.prix,
+        details: newPaiement.prixAnnuel.details
+      },
+      fraisMobilite: {
+        titre: newPaiement.fraisMobilite.titre,
+        prix: newPaiement.fraisMobilite.prix,
+        details: newPaiement.fraisMobilite.details
+      },
+      paiementEchelonne: {
+        titre: newPaiement.paiementEchelonne.titre,
+        prix: newPaiement.paiementEchelonne.prix,
+        details: newPaiement.paiementEchelonne.details
+      }
+    } as unknown as Paiement;
+    return this.http.put<Paiement>(this.url, updatedPaiement);
   }
 }

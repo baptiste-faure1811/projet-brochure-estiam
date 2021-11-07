@@ -9,6 +9,13 @@ module.exports.getPaiements = async (req, res) => {
   res.send(JSON.stringify(paiement));
 };
 
+module.exports.getPaiement = async (req, res) => {
+  const paiement = await Paiement.findById(ObjectId(req.params.getID));
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.status(200);
+  res.send(JSON.stringify(paiement));
+};
+
 module.exports.postPaiement = async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin","*");
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -59,4 +66,29 @@ module.exports.deletePaiement = async (req, res) => {
 };
 
 module.exports.updatePaiement = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.status(200);
+
+  Paiement.updateOne(
+    { _id: req.body._id },
+    {
+      'exemple.nom': req.body.exemple.nom,
+      'exemple.info': req.body.exemple.info,
+      'prixAnnuel.titre': req.body.prixAnnuel.titre,
+      'prixAnnuel.prix': req.body.prixAnnuel.prix,
+      'prixAnnuel.details': req.body.prixAnnuel.details,
+      'fraisMobilite.titre': req.body.fraisMobilite.titre,
+      'fraisMobilite.prix': req.body.fraisMobilite.prix,
+      'fraisMobilite.details': req.body.fraisMobilite.details,
+      'paiementEchelonne.titre': req.body.paiementEchelonne.titre,
+      'paiementEchelonne.prix': req.body.paiementEchelonne.prix,
+      'paiementEchelonne.details': req.body.paiementEchelonne.details
+    }
+  )
+  .then(() => {
+    console.log("Successfully updated paiement.")
+  })
+  .catch((err) => console.log(`Could not update paiement with id ${req.body._id}`, err));
 };

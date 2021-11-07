@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { Paiement } from '../paiement';
+import { PaiementService } from '../paiement.service';
+
 
 @Component({
   selector: 'app-paiement-details',
@@ -6,10 +11,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./paiement-details.component.css']
 })
 export class PaiementDetailsComponent implements OnInit {
+  paiement: Paiement | undefined;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private paiementService: PaiementService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
+    this.getPaiement();
   }
 
+  getPaiement(): void {
+    const id = String(this.route.snapshot.paramMap.get('id'));
+    console.log(`id de paiement = ${id}`);
+    this.paiementService.getPaiement(id).subscribe(paiement => this.paiement = paiement);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  save(): void {
+    if (this.paiement) {
+      this.paiementService.updatePaiement(this.paiement)
+        .subscribe(() => this.goBack());
+    }
+  }
 }
