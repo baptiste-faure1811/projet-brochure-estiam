@@ -40,6 +40,53 @@ module.exports.getProgrammes = async (req, res) => {
     res.send(JSON.stringify(programmes));
 };
 
+module.exports.getProgrammeByYear = async (req, res) => {
+
+    // Get hostname and year from parameters
+    const year = req.params.year;
+    if (year == null || year == undefined || year == "") {
+        res.status(500);
+        console.log("Please provide a valid year.");
+        res.send("Please provide a valid year.");
+        return;
+    }
+    const hostname = req.headers.host;
+    
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Content-Type', 'application/json');
+
+    // Get the programme from database matching given year
+    const programme = await Programme.findOne({ year: year }).lean();
+
+    if (programme == undefined || programme == null) {
+        // If no result, result empty JSON
+        console.log('No Programme matching year: ' + year);
+        res.send(JSON.stringify({}));
+        return;
+    }
+    
+    // Remove unnecessary properties
+    delete programme.__v;
+
+    // Check weather to return only programmes or full details
+    const getFullDetails = req.query.getFullDetails === 'true';
+    if (getFullDetails) {
+        await r2("http://" + hostname + "/groupes/programmeID/" + programme._id + "?getFullDetails=" + getFullDetails).json
+            .then((data) => {
+                programme.groupes = data;
+            }).catch(err => {
+                res.status(500);
+                console.log(err.message);
+                res.send(err.message);
+            });
+    }
+
+    // Return response
+    res.status(200);
+    res.send(JSON.stringify(programme));
+};
+
 module.exports.postProgramme = async (req, res) => {
    
     // Set headers

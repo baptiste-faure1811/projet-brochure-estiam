@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Entreprise } from '../entreprise';
-import { EntrepriseService } from '../entreprise.service';
+import { Entreprise } from '../../services/entrepriseService/entreprise';
+import { EntrepriseService } from '../../services/entrepriseService/entreprise.service';
 
 @Component({
   selector: 'app-entreprise',
@@ -30,7 +30,7 @@ export class EntrepriseComponent implements OnInit {
 
   deleteEntreprise(entreprise: Entreprise) {
     this.entrepriseService.deleteEntreprise(entreprise).subscribe(entreprise => {
-
+      this.getEntreprises();
     });
   }
 
