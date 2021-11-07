@@ -29,23 +29,15 @@ export class EntrepriseComponent implements OnInit {
   }
 
   deleteEntreprise(entreprise: Entreprise) {
-    console.log("deleted " + entreprise.name);
-    // this.entrepriseService.deleteEntreprise(entreprise).subscribe(entreprise => {
-    //     console.log("deleted, before: " + this.entreprises.length);
-    //     const index = this.entreprises.indexOf(entreprise)
-    //     if (index > -1) {
-    //       this.entreprises.splice(index, 1);
-    //     }
-    //     console.log("deleted, after: " + this.entreprises.length);
-        
-    // });
+    this.entrepriseService.deleteEntreprise(entreprise).subscribe(entreprise => {
+
+    });
   }
 
   updateEntreprise(newName: string, id: string) {
     this.entrepriseService.updateEntreprise(newName, id).subscribe(entreprise => {
-      this.entreprises.push(entreprise);
-      console.log("updated");
-  });
+        this.getEntreprises();
+    });
   }
   
 
