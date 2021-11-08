@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 var db = mongoose
     .connect(
-        `${process.env.MONGO_DB_URL}`,
+        `mongodb+srv://ESTIAM-brochure:ESTIAM-brochure@cluster0.i47bo.mongodb.net/projet-brochure?retryWrites=true&w=majority`,
         { useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => {
