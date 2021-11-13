@@ -11,14 +11,23 @@ export interface Groupe {
     name: String;
     totalECTS: Number;
     programme: String;
-    uniteEnseignements: [UniteEnseignement];
+    domaines: [Domaine];
 }
 
-export interface UniteEnseignement {
+export interface Domaine {
     _id: String;
     name: String;
-    code: String;
-    totalDuration: Number;
     groupe: String;
-    domaines: [String];
+    cours: [Cours];
+}
+
+export interface Cours {
+    _id: String;
+    name: String;
+    ECTSCredit: Number;
+    ECTSCode: String;
+    oldCode: String;
+    semestre: Number;
+    duration: Number;
+    domaine: String;
 }
