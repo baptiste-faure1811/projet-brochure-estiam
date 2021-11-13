@@ -92,7 +92,7 @@ module.exports.getDomaine = async (req, res) => {
     }
 };
 
-module.exports.getDomainesByUniteEnseignementID = async (req, res) => {
+module.exports.getDomainesByGroupeID = async (req, res) => {
 
     // Get hostname
     const hostname = req.headers.host;
@@ -102,23 +102,23 @@ module.exports.getDomainesByUniteEnseignementID = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
   
     // Get id from parameter and check if valid
-    if (ObjectId.isValid(req.params.uniteEnseignementID) == false) {
+    if (ObjectId.isValid(req.params.groupeID) == false) {
         // Invalid Id
-        const errorDescription = 'Please provide a valid uniteEnseignementID.';
+        const errorDescription = 'Please provide a valid groupeID.';
         console.log(errorDescription);
         res.status(500);
         res.send(errorDescription);
         return;
     }
-    const uniteEnseignementID = req.params.uniteEnseignementID;
+    const groupeID = req.params.groupeID;
   
-    // Get all domaines from database with matching uniteEnseignementID
-    const domaines = await Domaine.find({ uniteEnseignement: uniteEnseignementID }).lean();
+    // Get all domaines from database with matching groupeID
+    const domaines = await Domaine.find({ groupe: groupeID }).lean();
     
     // Check if null
     if (domaines == undefined || domaines == null || domaines.length == 0) {
         // If no result, result empty JSON
-        console.log('No Domaine with uniteEnseignementID: ' + uniteEnseignementID);
+        console.log('No Domaine with groupeID: ' + groupeID);
         res.send(JSON.stringify([]));
         return;
     } else {
@@ -159,8 +159,8 @@ module.exports.postDomaine = async (req, res) => {
     // Create new object to save using data from parameters
     const domaine = new Domaine({
       _id: ObjectId(),
-      name: "Domaine Name",
-      uniteEnseignement: ObjectId()
+      name: "Some domaine name",
+      groupe: ObjectId()
     });
     
     // Save new object to database

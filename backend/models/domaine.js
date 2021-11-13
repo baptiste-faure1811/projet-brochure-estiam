@@ -11,7 +11,7 @@ const domaineSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    uniteEnseignement: {
+    groupe: {
         type: ObjectId,
         required: true
     }

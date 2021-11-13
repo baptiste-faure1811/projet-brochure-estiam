@@ -20,13 +20,13 @@ module.exports.getGroupes = async (req, res) => {
         delete groupe.__v;
     });
 
-    // Check weather to return only groupes or full details
+    // Check weather to return only unites or full details
     const getFullDetails = req.query.getFullDetails === 'true';
     if (getFullDetails) {
         for (const groupe of groupes) {
-            await r2("http://" + hostname + "/uniteEnseignements/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+            await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
             .then((data) => {
-              groupe.uniteEnseignements = data;
+                groupe.domaines = data;
             }).catch(err => {
                 res.status(500);
                 console.log(err.message);
@@ -76,14 +76,14 @@ module.exports.getGroupe = async (req, res) => {
       // Check weather to return only the groupe or full details
       const getFullDetails = req.query.getFullDetails === 'true';
       if (getFullDetails) {
-          await r2("http://" + hostname + "/uniteEnseignements/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
-          .then((data) => {
-            groupe.uniteEnseignements = data;
-          }).catch(err => {
-              res.status(500);
-              console.log(err.message);
-              res.send(err.message);
-          });
+            await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+            .then((data) => {
+                groupe.domaines = data;
+            }).catch(err => {
+                res.status(500);
+                console.log(err.message);
+                res.send(err.message);
+            });
       }
 
       // Return response
@@ -130,9 +130,9 @@ module.exports.getGroupeByProgrammeID = async (req, res) => {
       const getFullDetails = req.query.getFullDetails === 'true';
       if (getFullDetails) {
           for (const groupe of groupes) {
-              await r2("http://" + hostname + "/uniteEnseignements/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+              await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
               .then((data) => {
-                groupe.uniteEnseignements = data;
+                  groupe.domaines = data;
               }).catch(err => {
                   res.status(500);
                   console.log(err.message);

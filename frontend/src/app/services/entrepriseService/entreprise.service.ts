@@ -12,7 +12,6 @@ import { Observable, Subject } from "rxjs";
 export class EntrepriseService {
 
   private entreprises: Entreprise[] = [];
-  private entreprises$ = new Subject<Entreprise[]>();
   readonly url = "http://localhost:3000/entreprises";
 
   constructor(private http: HttpClient) {}

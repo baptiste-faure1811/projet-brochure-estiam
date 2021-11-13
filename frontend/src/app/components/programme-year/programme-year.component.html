@@ -1,6 +1,11 @@
 
 
-
-
-<p>programme-year works!</p>
-<app-entreprise></app-entreprise>
+<div class="" *ngFor="let programme of programmes">
+    <h4>{{programme.name}}</h4>
+    <div *ngFor="let groupe of programme.groupes">
+        <p>{{groupe.name}}, totalECTS: {{groupe.totalECTS}}</p>
+        <div *ngFor="let uniteEnseignement of groupe.uniteEnseignements">
+            <p style="margin-left: 22px;">{{uniteEnseignement.name}}, code: {{uniteEnseignement.code}}</p>
+        </div>
+    </div>
+</div>
