@@ -23,8 +23,8 @@ export class PaiementComponent implements OnInit {
     this.paiementService.getPaiements().subscribe(paiements => this.paiements = paiements);
   }
 
-  addPaiement(name: string): void {
-    this.paiementService.addPaiement(name).subscribe(paiement => this.paiements.push(paiement));
+  addPaiement(paiement: Paiement): void {
+    this.paiementService.addPaiement(paiement).subscribe(paiement => this.paiements.push(paiement));
   }
 
   deletePaiement(paiement: Paiement) {
@@ -33,11 +33,6 @@ export class PaiementComponent implements OnInit {
 
   updatePaiement(newPaiement: Paiement) {
     this.paiementService.updatePaiement(newPaiement).subscribe();
-  }
-
-  addPaie():void{
-    this.paiementService.addPaiement("null").subscribe(paiement => this.paiements.push(paiement));
-    console.log("addPaie")
   }
 
 

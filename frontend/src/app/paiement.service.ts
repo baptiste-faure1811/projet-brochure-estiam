@@ -25,26 +25,27 @@ export class PaiementService {
     return this.http.get<Paiement>(url);
   }
 
-  addPaiement(name: string) : Observable<Paiement> {
+  addPaiement(paiement: Paiement) : Observable<Paiement> {
+    console.log(`paiement : ${paiement.exemple.nom}`)
     const newPaiement = {
       exemple: {
-        nom: "ExempleNom",
-        info: "ExempleInfo"
+        nom: paiement.exemple.nom,
+        info: paiement.exemple.info
       },
       prixAnnuel: {
-        titre: "prixAnnuelTitre",
-        prix: 10000,
-        details: "prixAnnuelDetails"
+        titre: paiement.prixAnnuel.titre,
+        prix: paiement.prixAnnuel.prix,
+        details: paiement.prixAnnuel.details
       },
       fraisMobilite: {
-        titre: "fraisMobiliteTitre",
-        prix: 20000,
-        details: "fraisMobiliteDetails"
+        titre: paiement.fraisMobilite.titre,
+        prix: paiement.fraisMobilite.prix,
+        details: paiement.fraisMobilite.details
       },
       paiementEchelonne: {
-        titre: "paiementEchelonneTitre",
-        prix: 30000,
-        details: "paiementEchelonneDetails"
+        titre: paiement.paiementEchelonne.titre,
+        prix: paiement.paiementEchelonne.prix,
+        details: paiement.paiementEchelonne.details
       }
     } as unknown as Paiement;
     // return this.http.post<Paiement>(this.url, newPaiement)
@@ -59,6 +60,7 @@ export class PaiementService {
 
   updatePaiement(newPaiement: Paiement): Observable<Paiement> {
     const updatedPaiement = {
+      _id:newPaiement._id,
       exemple: {
         nom: newPaiement.exemple.nom,
         info: newPaiement.exemple.info

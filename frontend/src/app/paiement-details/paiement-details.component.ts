@@ -25,7 +25,6 @@ export class PaiementDetailsComponent implements OnInit {
 
   getPaiement(): void {
     const id = String(this.route.snapshot.paramMap.get('id'));
-    console.log(`id de paiement = ${id}`);
     this.paiementService.getPaiement(id).subscribe(paiement => this.paiement = paiement);
   }
 
@@ -35,8 +34,10 @@ export class PaiementDetailsComponent implements OnInit {
 
   save(): void {
     if (this.paiement) {
+      console.log(this.paiement.exemple.nom);
       this.paiementService.updatePaiement(this.paiement)
-        .subscribe(() => this.goBack());
+        .subscribe();
+        this.location.back();
     }
   }
 }

@@ -70,22 +70,30 @@ module.exports.updatePaiement = async (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.status(200);
-
+  console.log("ID PAIEMENT : "+req.body._id);
   Paiement.updateOne(
-    { _id: req.body._id },
+    { _id: req.body._id},
     {
-      'exemple.nom': req.body.exemple.nom,
-      'exemple.info': req.body.exemple.info,
-      'prixAnnuel.titre': req.body.prixAnnuel.titre,
-      'prixAnnuel.prix': req.body.prixAnnuel.prix,
-      'prixAnnuel.details': req.body.prixAnnuel.details,
-      'fraisMobilite.titre': req.body.fraisMobilite.titre,
-      'fraisMobilite.prix': req.body.fraisMobilite.prix,
-      'fraisMobilite.details': req.body.fraisMobilite.details,
-      'paiementEchelonne.titre': req.body.paiementEchelonne.titre,
-      'paiementEchelonne.prix': req.body.paiementEchelonne.prix,
-      'paiementEchelonne.details': req.body.paiementEchelonne.details
-    }
+        exemple:{
+          nom: req.body.exemple.nom,
+          info: req.body.exemple.info
+        },
+        prixAnnuel:{
+          titre: req.body.prixAnnuel.titre,
+          prix: req.body.prixAnnuel.prix,
+          details: req.body.prixAnnuel.details
+        },
+        fraisMobilite:{
+          titre: req.body.fraisMobilite.titre,
+          prix: req.body.fraisMobilite.prix,
+          details: req.body.fraisMobilite.details
+        },
+        paiementEchelonne:{
+          titre: req.body.paiementEchelonne.titre,
+          prix: req.body.paiementEchelonne.prix,
+          details: req.body.paiementEchelonne.details
+        }
+      }
   )
   .then(() => {
     console.log("Successfully updated paiement.")
