@@ -10,7 +10,7 @@ import { Observable, Subject } from "rxjs";
 export class ProgrammeService {
 
   private programmes: Programme[] = [];
-  readonly url = "http://localhost:3000/programmes?getFullDetails=true";
+  readonly url = "http://localhost:3000/programmes?showDetails=true";
 
   constructor(private http: HttpClient) {}
 

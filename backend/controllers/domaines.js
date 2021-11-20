@@ -264,7 +264,6 @@ module.exports.deleteDomaine = async (req, res) => {
         console.log(errorDescription, err);
         res.send(errorDescription + " Error message: " + err.message);
     });
-
 } 
 
 module.exports.updateDomaine = async (req, res) => {
