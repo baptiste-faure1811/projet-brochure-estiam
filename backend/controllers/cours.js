@@ -151,3 +151,51 @@ module.exports.postCours = async (req, res) => {
     });
 
 };
+
+module.exports.deleteCours = async (req, res) => { 
+
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Content-Type', 'application/json');
+
+    // Get id from paramater
+    const id = req.params.deleteID;
+
+    if (id == undefined || id == "" || id == null) {
+        // No id in parameters
+        res.status(500);
+        const errorDescription = 'No _id provided. Please provide the object\'s id to delete.';
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check if deleteID is a valid ObjectID
+    if (ObjectId.isValid(id) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid id.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Delete object from database
+    Cours.deleteOne({ _id: id })
+    .then(() => {
+        // Deletion was successful
+        res.status(200);
+        console.log("Cours with _id " + id + " successfully deleted");
+        res.send(JSON.stringify([]));
+    })
+    .catch(err => {
+        // An error occured
+        res.status(500);
+        const errorDescription = `Could not delete Cours with _id ${id}.`;
+        console.log(errorDescription, err);
+        res.send(errorDescription + " Error message: " + err.message);
+    });
+
+} 

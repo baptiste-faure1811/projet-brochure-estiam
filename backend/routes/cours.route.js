@@ -8,4 +8,8 @@ router.get('/:coursID', coursController.getSingleCours);
 router.get('/domaineID/:domaineID', coursController.getCoursByDomaineID);
 router.post('/', coursController.postCours);
 
+// We are routing delete paths without id to show an error
+router.delete('/:deleteID', coursController.deleteCours);
+router.delete('/', coursController.deleteCours);
+
 module.exports = router;

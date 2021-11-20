@@ -8,4 +8,8 @@ router.get('/:domaineID', domaineController.getDomaine);
 router.get('/groupeID/:groupeID', domaineController.getDomainesByGroupeID);
 router.post('/', domaineController.postDomaine);
 
+// We are routing delete paths without id to show an error
+router.delete('/:deleteID', domaineController.deleteDomaine);
+router.delete('/', domaineController.deleteDomaine);
+
 module.exports = router;
