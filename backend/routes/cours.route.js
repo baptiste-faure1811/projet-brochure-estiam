@@ -12,4 +12,8 @@ router.post('/', coursController.postCours);
 router.delete('/:deleteID', coursController.deleteCours);
 router.delete('/', coursController.deleteCours);
 
+// We are routing put paths without id to show an error
+router.put('/:updateID', coursController.updateCours);
+router.put('/', coursController.updateCours);
+
 module.exports = router;

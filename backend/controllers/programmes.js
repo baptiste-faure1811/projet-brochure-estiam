@@ -96,7 +96,7 @@ module.exports.postProgramme = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
     // Check all required parameters
-    if (req.body.year == undefined || req.body.name == undefined || req.body.duration == undefined) {
+    if (req.body.year == undefined || req.body.name == undefined || req.body.totalDuration == undefined) {
         res.status(500);
         const errorDescription = "Please provide all required parameters to create a new programme.";
         console.log(errorDescription);
@@ -109,7 +109,7 @@ module.exports.postProgramme = async (req, res) => {
         _id: ObjectId(),
         name: req.body.name,
         year: req.body.year,
-        totalDuration: req.body.duration,
+        totalDuration: req.body.totalDuration,
     });
 
     // Save new object to database
@@ -176,3 +176,50 @@ module.exports.deleteProgramme = async (req, res) => {
     });
 
 } 
+
+module.exports.updateProgramme = async (req, res) => {
+  
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Content-Type', 'application/json');
+
+    // Check required parameters
+    const id = req.params.updateID;
+    if (id == undefined || ObjectId.isValid(id) == false) {
+        res.status(500);
+        const errorDescription = "Please provide a valid Programme's _id.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check optional parameters
+    var updatedSchema = {};
+    if (req.body.name != undefined) {
+        updatedSchema.name = req.body.name;
+    }
+    if (req.body.year != undefined) {
+        updatedSchema.year = req.body.year;
+    }
+    if (req.body.totalDuration != undefined) {
+        updatedSchema.totalDuration = req.body.totalDuration;
+    }
+    
+    // Update object from database
+    Programme.updateOne({ _id: id }, updatedSchema)
+    .then(() => {
+        // Update was successful
+        res.status(200);
+        console.log("Programme with _id " + id + " successfully updated");
+        res.send(JSON.stringify([]));
+    })
+    .catch(err => {
+        // An error occured while updating
+        res.status(500);
+        const errorDescription = `Could not update Programme with _id ${id}.`;
+        console.log(errorDescription, err);
+        res.send(errorDescription + " Error message: " + err.message);
+    });
+  };

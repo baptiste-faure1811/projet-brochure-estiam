@@ -12,4 +12,8 @@ router.post('/', domaineController.postDomaine);
 router.delete('/:deleteID', domaineController.deleteDomaine);
 router.delete('/', domaineController.deleteDomaine);
 
+// We are routing put paths without id to show an error
+router.put('/:updateID', domaineController.updateDomaine);
+router.put('/', domaineController.updateDomaine);
+
 module.exports = router;

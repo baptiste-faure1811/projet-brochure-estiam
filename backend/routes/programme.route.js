@@ -11,4 +11,8 @@ router.post('/', programmeController.postProgramme);
 router.delete('/:deleteID', programmeController.deleteProgramme);
 router.delete('/', programmeController.deleteProgramme);
 
+// We are routing put paths without id to show an error
+router.put('/:updateID', programmeController.updateProgramme);
+router.put('/', programmeController.updateProgramme);
+
 module.exports = router;

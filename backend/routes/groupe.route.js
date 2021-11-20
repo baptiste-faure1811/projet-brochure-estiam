@@ -12,4 +12,8 @@ router.post('/', groupeController.postGroupe);
 router.delete('/:deleteID', groupeController.deleteGroupe);
 router.delete('/', groupeController.deleteGroupe);
 
+// We are routing put paths without id to show an error
+router.put('/:updateID', groupeController.updateGroupe);
+router.put('/', groupeController.updateGroupe);
+
 module.exports = router;

@@ -104,7 +104,7 @@ module.exports.postCours = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
  
     // Check all required parameters
-    if (req.body.name == undefined || req.body.ects == undefined || req.body.ectsCode == undefined || req.body.oldCode == undefined || req.body.semestre == undefined || req.body.duration == undefined || req.body.domaineID == undefined) {
+    if (req.body.name == undefined || req.body.ECTSCredit == undefined || req.body.ECTSCode == undefined || req.body.oldCode == undefined || req.body.semestre == undefined || req.body.duration == undefined || req.body.domaine == undefined) {
         res.status(500);
         const errorDescription = "Please provide all required parameters to create a new cours.";
         console.log(errorDescription);
@@ -113,7 +113,7 @@ module.exports.postCours = async (req, res) => {
     }
 
     // Check if domaineID is a valid ObjectID
-    if (ObjectId.isValid(req.body.domaineID) == false) {
+    if (ObjectId.isValid(req.body.domaine) == false) {
         // Invalid Id
         const errorDescription = 'Please provide a valid domaineID.';
         console.log(errorDescription);
@@ -126,12 +126,12 @@ module.exports.postCours = async (req, res) => {
     const cours = new Cours({
         _id: ObjectId(),
         name: req.body.name,
-        ECTSCredit: req.body.ects,
-        ECTSCode: req.body.ectsCode,
+        ECTSCredit: req.body.ECTSCredit,
+        ECTSCode: req.body.ECTSCode,
         oldCode: req.body.oldCode,
         semestre: req.body.semestre,
         duration: req.body.duration,
-        domaine: ObjectId(req.body.domaineID)
+        domaine: ObjectId(req.body.domaine)
     });
     
     // Save new object to database
@@ -199,3 +199,70 @@ module.exports.deleteCours = async (req, res) => {
     });
 
 } 
+
+module.exports.updateCours = async (req, res) => {
+  
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Content-Type', 'application/json');
+
+    // Check required parameters
+    const id = req.params.updateID;
+    if (id == undefined || ObjectId.isValid(id) == false) {
+        res.status(500);
+        const errorDescription = "Please provide a valid Cours's _id.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check optional parameters
+    var updatedSchema = {};
+    if (req.body.name != undefined) {
+        updatedSchema.name = req.body.name;
+    }
+    if (req.body.ECTSCredit != undefined) {
+        updatedSchema.ECTSCredit = req.body.ECTSCredit;
+    }
+    if (req.body.ECTSCode != undefined) {
+        updatedSchema.ECTSCode = req.body.ECTSCode;
+    }
+    if (req.body.oldCode != undefined) {
+        updatedSchema.oldCode = req.body.oldCode;
+    }
+    if (req.body.semestre != undefined) {
+        updatedSchema.semestre = req.body.semestre;
+    }
+    if (req.body.duration != undefined) {
+        updatedSchema.duration = req.body.duration;
+    }
+    if (req.body.domaine != undefined) {
+        if (ObjectId.isValid(req.body.domaine) == true) {
+            updatedSchema.domaine = req.body.domaine;
+        } else {
+            const errorDescription = 'Please provide a valid domaineID.';
+            console.log(errorDescription);
+            res.status(500);
+            res.send(errorDescription);
+            return;
+        }
+    }
+    
+    // Update object from database
+    Cours.updateOne({ _id: id }, updatedSchema)
+    .then(() => {
+        // Update was successful
+        res.status(200);
+        console.log("Cours with _id " + id + " successfully updated");
+        res.send(JSON.stringify([]));
+    })
+    .catch(err => {
+        // An error occured while updating
+        res.status(500);
+        const errorDescription = `Could not update Cours with _id ${id}.`;
+        console.log(errorDescription, err);
+        res.send(errorDescription + " Error message: " + err.message);
+    });
+  };

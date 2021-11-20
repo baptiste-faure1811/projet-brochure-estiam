@@ -157,7 +157,7 @@ module.exports.postDomaine = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
  
     // Check all required parameters
-    if (req.body.name == undefined || req.body.groupeID == undefined) {
+    if (req.body.name == undefined || req.body.groupe == undefined) {
         res.status(500);
         const errorDescription = "Please provide all required parameters to create a new domaine.";
         console.log(errorDescription);
@@ -166,7 +166,7 @@ module.exports.postDomaine = async (req, res) => {
     }
 
     // Check if groupeID is a valid ObjectID
-    if (ObjectId.isValid(req.body.groupeID) == false) {
+    if (ObjectId.isValid(req.body.groupe) == false) {
         // Invalid Id
         const errorDescription = 'Please provide a valid groupeID.';
         console.log(errorDescription);
@@ -179,7 +179,7 @@ module.exports.postDomaine = async (req, res) => {
     const domaine = new Domaine({
         _id: ObjectId(),
         name: req.body.name,
-        groupe: ObjectId(req.body.groupeID)
+        groupe: ObjectId(req.body.groupe)
     });
     
     // Save new object to database
@@ -247,3 +247,55 @@ module.exports.deleteDomaine = async (req, res) => {
     });
 
 } 
+
+module.exports.updateDomaine = async (req, res) => {
+  
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Content-Type', 'application/json');
+
+    // Check required parameters
+    const id = req.params.updateID;
+    if (id == undefined || ObjectId.isValid(id) == false) {
+        res.status(500);
+        const errorDescription = "Please provide a valid Domaine's _id.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check optional parameters
+    var updatedSchema = {};
+    if (req.body.name != undefined) {
+        updatedSchema.name = req.body.name;
+    }
+    if (req.body.groupe != undefined) {
+        if (ObjectId.isValid(req.body.groupe) == true) {
+            updatedSchema.groupe = req.body.groupe;
+        } else {
+            const errorDescription = 'Please provide a valid groupeID.';
+            console.log(errorDescription);
+            res.status(500);
+            res.send(errorDescription);
+            return;
+        }
+    }
+    
+    // Update object from database
+    Domaine.updateOne({ _id: id }, updatedSchema)
+    .then(() => {
+        // Update was successful
+        res.status(200);
+        console.log("Domaine with _id " + id + " successfully updated");
+        res.send(JSON.stringify([]));
+    })
+    .catch(err => {
+        // An error occured while updating
+        res.status(500);
+        const errorDescription = `Could not update Domaine with _id ${id}.`;
+        console.log(errorDescription, err);
+        res.send(errorDescription + " Error message: " + err.message);
+    });
+  };

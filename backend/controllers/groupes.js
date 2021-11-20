@@ -155,7 +155,7 @@ module.exports.postGroupe = async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
  
     // Check all required parameters
-    if (req.body.name == undefined || req.body.ects == undefined || req.body.duration == undefined || req.body.programmeID == undefined) {
+    if (req.body.name == undefined || req.body.totalECTS == undefined || req.body.totalDuration == undefined || req.body.programme == undefined) {
         res.status(500);
         const errorDescription = "Please provide all required parameters to create a new groupe.";
         console.log(errorDescription);
@@ -164,7 +164,7 @@ module.exports.postGroupe = async (req, res) => {
     }
 
     // Check if programmeID is a valid ObjectID
-    if (ObjectId.isValid(req.body.programmeID) == false) {
+    if (ObjectId.isValid(req.body.programme) == false) {
         // Invalid Id
         const errorDescription = 'Please provide a valid programmeID.';
         console.log(errorDescription);
@@ -177,9 +177,9 @@ module.exports.postGroupe = async (req, res) => {
     const groupe = new Groupe({
         _id: ObjectId(),
         name: req.body.name,
-        totalECTS: req.body.ects,
-        totalDuration: req.body.duration,
-        programme: ObjectId(req.body.programmeID)
+        totalECTS: req.body.totalECTS,
+        totalDuration: req.body.totalDuration,
+        programme: ObjectId(req.body.programme)
     });
     
     // Save new object to database
@@ -247,3 +247,61 @@ module.exports.deleteGroupe = async (req, res) => {
     });
 
 } 
+
+module.exports.updateGroupe = async (req, res) => {
+  
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Content-Type', 'application/json');
+
+    // Check required parameters
+    const id = req.params.updateID;
+    if (id == undefined || ObjectId.isValid(id) == false) {
+        res.status(500);
+        const errorDescription = "Please provide a valid Groupe's _id.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check optional parameters
+    var updatedSchema = {};
+    if (req.body.name != undefined) {
+        updatedSchema.name = req.body.name;
+    }
+    if (req.body.totalECTS != undefined) {
+        updatedSchema.totalECTS = req.body.totalECTS;
+    }
+    if (req.body.totalDuration != undefined) {
+        updatedSchema.totalDuration = req.body.totalDuration;
+    }
+    if (req.body.programme != undefined) {
+        if (ObjectId.isValid(req.body.programme) == true) {
+            updatedSchema.programme = req.body.programme;
+        } else {
+            const errorDescription = 'Please provide a valid programmeID.';
+            console.log(errorDescription);
+            res.status(500);
+            res.send(errorDescription);
+            return;
+        }
+    }
+    
+    // Update object from database
+    Groupe.updateOne({ _id: id }, updatedSchema)
+    .then(() => {
+        // Update was successful
+        res.status(200);
+        console.log("Groupe with _id " + id + " successfully updated");
+        res.send(JSON.stringify([]));
+    })
+    .catch(err => {
+        // An error occured while updating
+        res.status(500);
+        const errorDescription = `Could not update Groupe with _id ${id}.`;
+        console.log(errorDescription, err);
+        res.send(errorDescription + " Error message: " + err.message);
+    });
+  };
