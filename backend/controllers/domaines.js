@@ -21,8 +21,8 @@ module.exports.getDomaines = async (req, res) => {
     });
 
     // Check weather to return only unites or full details
-    const getFullDetails = req.query.getFullDetails === 'true';
-    if (getFullDetails) {
+    const showDetails = req.query.showDetails === 'true';
+    if (showDetails) {
         for (const domaine of domaines) {
             await r2("http://" + hostname + "/cours/domaineID/" + domaine._id).json
             .then((data) => {
@@ -74,8 +74,8 @@ module.exports.getDomaine = async (req, res) => {
         delete domaine.__v;
 
         // Check weather to return only unites or full details
-        const getFullDetails = req.query.getFullDetails === 'true';
-        if (getFullDetails) {
+        const showDetails = req.query.showDetails === 'true';
+        if (showDetails) {
             await r2("http://" + hostname + "/cours/domaineID/" + domaine._id).json
                 .then((data) => {
                     domaine.cours = data;
@@ -128,8 +128,8 @@ module.exports.getDomainesByGroupeID = async (req, res) => {
         });
 
         // Check weather to return only unites or full details
-        const getFullDetails = req.query.getFullDetails === 'true';
-        if (getFullDetails) {
+        const showDetails = req.query.showDetails === 'true';
+        if (showDetails) {
             for (const domaine of domaines) {
                 await r2("http://" + hostname + "/cours/domaineID/" + domaine._id).json
                 .then((data) => {
@@ -156,11 +156,30 @@ module.exports.postDomaine = async (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Content-Type', 'application/json');
  
+    // Check all required parameters
+    if (req.body.name == undefined || req.body.groupeID == undefined) {
+        res.status(500);
+        const errorDescription = "Please provide all required parameters to create a new domaine.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check if groupeID is a valid ObjectID
+    if (ObjectId.isValid(req.body.groupeID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid groupeID.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+
     // Create new object to save using data from parameters
     const domaine = new Domaine({
-      _id: ObjectId(),
-      name: "Some domaine name",
-      groupe: ObjectId()
+        _id: ObjectId(),
+        name: req.body.name,
+        groupe: ObjectId(req.body.groupeID)
     });
     
     // Save new object to database

@@ -21,10 +21,10 @@ module.exports.getGroupes = async (req, res) => {
     });
 
     // Check weather to return only unites or full details
-    const getFullDetails = req.query.getFullDetails === 'true';
-    if (getFullDetails) {
+    const showDetails = req.query.showDetails === 'true';
+    if (showDetails) {
         for (const groupe of groupes) {
-            await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+            await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?showDetails=" + showDetails).json
             .then((data) => {
                 groupe.domaines = data;
             }).catch(err => {
@@ -74,9 +74,9 @@ module.exports.getGroupe = async (req, res) => {
       delete groupe.__v;
 
       // Check weather to return only the groupe or full details
-      const getFullDetails = req.query.getFullDetails === 'true';
-      if (getFullDetails) {
-            await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+      const showDetails = req.query.showDetails === 'true';
+      if (showDetails) {
+            await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?showDetails=" + showDetails).json
             .then((data) => {
                 groupe.domaines = data;
             }).catch(err => {
@@ -127,10 +127,10 @@ module.exports.getGroupeByProgrammeID = async (req, res) => {
       });
 
       // Check weather to return only groupes or full details
-      const getFullDetails = req.query.getFullDetails === 'true';
-      if (getFullDetails) {
+      const showDetails = req.query.showDetails === 'true';
+      if (showDetails) {
           for (const groupe of groupes) {
-              await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?getFullDetails=" + getFullDetails).json
+              await r2("http://" + hostname + "/domaines/groupeID/" + groupe._id + "?showDetails=" + showDetails).json
               .then((data) => {
                   groupe.domaines = data;
               }).catch(err => {
@@ -154,13 +154,32 @@ module.exports.postGroupe = async (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Content-Type', 'application/json');
  
+    // Check all required parameters
+    if (req.body.name == undefined || req.body.ects == undefined || req.body.duration == undefined || req.body.programmeID == undefined) {
+        res.status(500);
+        const errorDescription = "Please provide all required parameters to create a new groupe.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check if programmeID is a valid ObjectID
+    if (ObjectId.isValid(req.body.programmeID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid programmeID.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+
     // Create new object to save using data from parameters
     const groupe = new Groupe({
-      _id: ObjectId(),
-      name: "Groupe Name",
-      totalECTS: 60,
-      totalDuration: 130,
-      programme: ObjectId()
+        _id: ObjectId(),
+        name: req.body.name,
+        totalECTS: req.body.ects,
+        totalDuration: req.body.duration,
+        programme: ObjectId(req.body.programmeID)
     });
     
     // Save new object to database

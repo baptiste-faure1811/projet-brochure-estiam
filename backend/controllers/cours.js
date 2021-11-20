@@ -103,16 +103,35 @@ module.exports.postCours = async (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Content-Type', 'application/json');
  
+    // Check all required parameters
+    if (req.body.name == undefined || req.body.ects == undefined || req.body.ectsCode == undefined || req.body.oldCode == undefined || req.body.semestre == undefined || req.body.duration == undefined || req.body.domaineID == undefined) {
+        res.status(500);
+        const errorDescription = "Please provide all required parameters to create a new cours.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
+
+    // Check if domaineID is a valid ObjectID
+    if (ObjectId.isValid(req.body.domaineID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid domaineID.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+
     // Create new object to save using data from parameters
     const cours = new Cours({
-      _id: ObjectId(),
-      name: "Cours Name",
-      ECTSCredit: 30,
-      ECTSCode: "ECTS Code",
-      oldCode: "Some Old Code",
-      semestre: 1,
-      duration: 120,
-      domaine: ObjectId()
+        _id: ObjectId(),
+        name: req.body.name,
+        ECTSCredit: req.body.ects,
+        ECTSCode: req.body.ectsCode,
+        oldCode: req.body.oldCode,
+        semestre: req.body.semestre,
+        duration: req.body.duration,
+        domaine: ObjectId(req.body.domaineID)
     });
     
     // Save new object to database

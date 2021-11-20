@@ -21,10 +21,10 @@ module.exports.getProgrammes = async (req, res) => {
     });
 
     // Check weather to return only programmes or full details
-    const getFullDetails = req.query.getFullDetails === 'true';
-    if (getFullDetails) {
+    const showDetails = req.query.showDetails === 'true';
+    if (showDetails) {
         for (const programme of programmes) {
-            await r2("http://" + hostname + "/groupes/programmeID/" + programme._id + "?getFullDetails=" + getFullDetails).json
+            await r2("http://" + hostname + "/groupes/programmeID/" + programme._id + "?showDetails=" + showDetails).json
             .then((data) => {
                 programme.groupes = data;
             }).catch(err => {
@@ -70,9 +70,9 @@ module.exports.getProgrammeByYear = async (req, res) => {
     delete programme.__v;
 
     // Check weather to return only programmes or full details
-    const getFullDetails = req.query.getFullDetails === 'true';
-    if (getFullDetails) {
-        await r2("http://" + hostname + "/groupes/programmeID/" + programme._id + "?getFullDetails=" + getFullDetails).json
+    const showDetails = req.query.showDetails === 'true';
+    if (showDetails) {
+        await r2("http://" + hostname + "/groupes/programmeID/" + programme._id + "?showDetails=" + showDetails).json
             .then((data) => {
                 programme.groupes = data;
             }).catch(err => {
@@ -94,13 +94,22 @@ module.exports.postProgramme = async (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Content-Type', 'application/json');
+
+    // Check all required parameters
+    if (req.body.year == undefined || req.body.name == undefined || req.body.duration == undefined) {
+        res.status(500);
+        const errorDescription = "Please provide all required parameters to create a new programme.";
+        console.log(errorDescription);
+        res.send(errorDescription);
+        return;
+    }
  
     // Create new object to save using data from parameters
     const programme = new Programme({
         _id: ObjectId(),
-        name: "Programme Name",
-        year: 2021,
-        totalDuration: 200,
+        name: req.body.name,
+        year: req.body.year,
+        totalDuration: req.body.duration,
     });
 
     // Save new object to database
