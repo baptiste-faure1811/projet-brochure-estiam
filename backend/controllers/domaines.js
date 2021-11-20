@@ -230,6 +230,25 @@ module.exports.deleteDomaine = async (req, res) => {
         return;
     }
 
+    // Check cascade delete
+    const cascadeDelete = req.query.cascadeDelete === 'true';
+    if (cascadeDelete) {
+        const hostname = req.headers.host;
+        try {
+            // 1. Get domaine
+            let domaine = await r2("http://" + hostname + "/domaines/" + id + "?showDetails=true").json
+            // 2. Delete associated objects
+            for (const singleCours of domaine.cours) {
+                let result = await r2.delete("http://" + hostname + "/cours/" + singleCours._id).json
+            }
+        } catch(err) {
+            res.status(500);
+            console.log(err.message);
+            res.send(err.message);
+            return;
+        }
+    }
+
     // Delete object from database
     Domaine.deleteOne({ _id: id })
     .then(() => {

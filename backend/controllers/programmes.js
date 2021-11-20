@@ -40,6 +40,57 @@ module.exports.getProgrammes = async (req, res) => {
     res.send(JSON.stringify(programmes));
 };
 
+module.exports.getProgramme = async (req, res) => {
+
+    // Get hostname
+    const hostname = req.headers.host;
+      
+    // Set headers
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader('Content-Type', 'application/json');
+  
+    // Get id from parameter and check if valid
+    if (ObjectId.isValid(req.params.programmeID) == false) {
+        // Invalid Id
+        const errorDescription = 'Please provide a valid _id.';
+        console.log(errorDescription);
+        res.status(500);
+        res.send(errorDescription);
+        return;
+    }
+    const programmeID = req.params.programmeID;
+  
+    // Get programme from database with mathing _id
+    const programme = await Programme.findOne({ _id: programmeID }).lean();
+  
+    res.status(200);
+    if (programme == undefined || programme == null) {
+        // If no result, result empty JSON
+        console.log('No Programme with _id: ' + programmeID);
+        res.send(JSON.stringify({}));
+        return;
+    } else {
+        // Remove unnecessary properties
+        delete programme.__v;
+  
+        // Check weather to return only the programme or full details
+        const showDetails = req.query.showDetails === 'true';
+        if (showDetails) {
+              await r2("http://" + hostname + "/groupes/programmeID/" + programme._id + "?showDetails=" + showDetails).json
+              .then((data) => {
+                    programme.groupes = data;
+              }).catch(err => {
+                  res.status(500);
+                  console.log(err.message);
+                  res.send(err.message);
+              });
+        }
+  
+        // Return response
+        res.send(JSON.stringify(programme));
+    }
+  };
+
 module.exports.getProgrammeByYear = async (req, res) => {
 
     // Get hostname and year from parameters
@@ -136,7 +187,7 @@ module.exports.deleteProgramme = async (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Content-Type', 'application/json');
-
+    
     // Get id from paramater
     const id = req.params.deleteID;
 
@@ -159,6 +210,25 @@ module.exports.deleteProgramme = async (req, res) => {
         return;
     }
 
+    // Check cascade delete
+    const cascadeDelete = req.query.cascadeDelete === 'true';
+    if (cascadeDelete) {
+        const hostname = req.headers.host;
+        try {
+            // 1. Get programme
+            let programme = await r2("http://" + hostname + "/programmes/" + id + "?showDetails=true").json
+            // 2. Delete associated objects
+            for (const groupe of programme.groupes) {
+                let result = await r2.delete("http://" + hostname + "/groupes/" + groupe._id + "?cascadeDelete=" + cascadeDelete).json
+            }
+        } catch(err) {
+            res.status(500);
+            console.log(err.message);
+            res.send(err.message);
+            return;
+        }
+    }
+
     // Delete object from database
     Programme.deleteOne({ _id: id })
     .then(() => {
@@ -175,7 +245,7 @@ module.exports.deleteProgramme = async (req, res) => {
         res.send(errorDescription + " Error message: " + err.message);
     });
 
-} 
+};
 
 module.exports.updateProgramme = async (req, res) => {
   
@@ -222,4 +292,4 @@ module.exports.updateProgramme = async (req, res) => {
         console.log(errorDescription, err);
         res.send(errorDescription + " Error message: " + err.message);
     });
-  };
+};

@@ -230,6 +230,25 @@ module.exports.deleteGroupe = async (req, res) => {
         return;
     }
 
+    // Check cascade delete
+    const cascadeDelete = req.query.cascadeDelete === 'true';
+    if (cascadeDelete) {
+        const hostname = req.headers.host;
+        try {
+            // 1. Get groupe
+            let groupe = await r2("http://" + hostname + "/groupes/" + id + "?showDetails=true").json
+            // 2. Delete associated objects
+            for (const domaine of groupe.domaines) {
+                let result = await r2.delete("http://" + hostname + "/domaines/" + domaine._id + "?cascadeDelete=" + cascadeDelete).json
+            }
+        } catch(err) {
+            res.status(500);
+            console.log(err.message);
+            res.send(err.message);
+            return;
+        }
+    }
+
     // Delete object from database
     Groupe.deleteOne({ _id: id })
     .then(() => {
