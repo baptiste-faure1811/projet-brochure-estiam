@@ -1,0 +1,33 @@
+
+<div *ngIf='programmes.length == 0' class="p-4 estiamBackgroundColorLight d-flex flex-column justify-content-center align-items-center mt-5" style="border-radius: 12px;">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="spinner-border estiamCyanText" role="status">
+            <span class="visually-hidden">Chargement des programmes ...</span>
+        </div>
+        <p class="p-0 m-0 mt-2">Chargement des programmes ...</p>
+    </div>
+</div>
+
+<div class="mt-5" *ngFor="let programme of programmes">
+    <h6 class="mt-4 text-center">Année {{programme.year}}</h6>
+    <h3 class="fw-bold text-center" style="color: #004080">{{programme.name}}</h3>
+    <div *ngFor="let groupe of programme.groupes" class="mt-4">
+        <div class="ms-3 d-flex flex-row justify-content-start align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="estiamCyanText" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+            <h5 class="estiamCyanText m-0 p-0 ms-2">{{groupe.name}}</h5>
+        </div>
+        <div class="p-4 estiamBackgroundColorLight mt-2" style="border-radius: 12px;">
+            <div *ngFor="let domaine of groupe.domaines" class="d-flex flex-column">
+                <p class="text-uppercase fs-6 fw-bold ms-1">{{domaine.name}}</p>
+                <div class="d-flex flex-row row gap-3 estiamCyanText mb-2 px-3" style="font-size: smaller;">
+                    <p class="m-0 p-0 col">Intitulé</p>
+                    <p class="m-0 p-0 col-1">Crédit ECTS</p>
+                    <p class="m-0 p-0 col-2">Code ECTS</p>
+                    <p class="m-0 p-0 col-2">Semestre</p>
+                    <p class="m-0 p-0 col-2">Durée (h)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
