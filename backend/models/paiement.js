@@ -44,6 +44,20 @@ const paiementSchema = mongoose.Schema({
             required: true
         }
     },
+    fraisMobiliteInternational: {
+        titre: {
+            type: String,
+            required: true
+        },
+        prix: {
+            type: Number,
+            required: true
+        },
+        details: {
+            type: String,
+            required: true
+        }
+    },
     paiementEchelonne: {
         titre: {
             type: String,

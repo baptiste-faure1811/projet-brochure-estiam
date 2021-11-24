@@ -42,6 +42,11 @@ export class PaiementService {
         prix: paiement.fraisMobilite.prix,
         details: paiement.fraisMobilite.details
       },
+      fraisMobiliteInternational: {
+        titre: paiement.fraisMobiliteInternational.titre,
+        prix: paiement.fraisMobiliteInternational.prix,
+        details: paiement.fraisMobiliteInternational.details
+      },
       paiementEchelonne: {
         titre: paiement.paiementEchelonne.titre,
         prix: paiement.paiementEchelonne.prix,
@@ -74,6 +79,11 @@ export class PaiementService {
         titre: newPaiement.fraisMobilite.titre,
         prix: newPaiement.fraisMobilite.prix,
         details: newPaiement.fraisMobilite.details
+      },
+      fraisMobiliteInternational: {
+        titre: newPaiement.fraisMobiliteInternational.titre,
+        prix: newPaiement.fraisMobiliteInternational.prix,
+        details: newPaiement.fraisMobiliteInternational.details
       },
       paiementEchelonne: {
         titre: newPaiement.paiementEchelonne.titre,

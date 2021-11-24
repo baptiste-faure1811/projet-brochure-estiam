@@ -25,6 +25,11 @@ export class PaiementCreationComponent implements OnInit {
       prix: null,
       details: ""
     },
+    fraisMobiliteInternational: {
+      titre: "",
+      prix: null,
+      details: ""
+    },
     paiementEchelonne: {
       titre: "",
       prix: null,

@@ -32,6 +32,17 @@ export interface Paiement {
             type: String
         }
     },
+    fraisMobiliteInternational: {
+        titre: {
+            type: String
+        },
+        prix: {
+            type: Number
+        },
+        details: {
+            type: String
+        }
+    },
     paiementEchelonne: {
         titre: {
             type: String

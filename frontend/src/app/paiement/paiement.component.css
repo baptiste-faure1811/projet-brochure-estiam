@@ -1,0 +1,43 @@
+.paiement-infos{
+    background-color: #004080;
+    padding: 3%;
+    color: white;
+    margin-bottom: 5%;
+}
+
+.paiement-prix{
+    color: yellow;
+    font-weight: bold;
+    font-size: xx-large;
+    margin: 0;
+}
+
+.paiement-nom{
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.paiement-info{
+    color: white;
+}
+
+.paiement-exemple{
+    background-color: #004080;
+    border-bottom-right-radius: 30%;
+    padding: 3%;
+}
+
+.paiement-details{
+    margin: 0;
+}
+
+.paiement-text-titre{
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
+}
+.paiement-titre{
+    background-color:#8AD2FA;
+    padding: 3%;
+}

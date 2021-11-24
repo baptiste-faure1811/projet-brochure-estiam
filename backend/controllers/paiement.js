@@ -38,6 +38,11 @@ module.exports.postPaiement = async (req, res) => {
         prix: req.body.fraisMobilite.prix,
         details: req.body.fraisMobilite.details
       },
+      fraisMobiliteInternational: {
+        titre: req.body.fraisMobiliteInternational.titre,
+        prix: req.body.fraisMobiliteInternational.prix,
+        details: req.body.fraisMobiliteInternational.details
+      },
       paiementEchelonne: {
         titre: req.body.paiementEchelonne.titre,
         prix: req.body.paiementEchelonne.prix,
@@ -87,6 +92,11 @@ module.exports.updatePaiement = async (req, res) => {
           titre: req.body.fraisMobilite.titre,
           prix: req.body.fraisMobilite.prix,
           details: req.body.fraisMobilite.details
+        },
+        fraisMobiliteInternational: {
+          titre: req.body.fraisMobiliteInternational.titre,
+          prix: req.body.fraisMobiliteInternational.prix,
+          details: req.body.fraisMobiliteInternational.details
         },
         paiementEchelonne:{
           titre: req.body.paiementEchelonne.titre,

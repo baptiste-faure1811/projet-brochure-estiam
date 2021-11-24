@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.estiamBackgroundColor {
+    background-color: #0099E6;
+}
+
+.estiamBackgroundColorLight {
+    background-color: rgba(0, 153, 239, 0.1);
+}
+
+.estiamCyanText {
+    color: #0099E6;
+}
+
