@@ -1,104 +1,101 @@
 <h1>Paiements :</h1>
 <div *ngIf="true">
-   <div class="container" *ngFor="let n of numSequence(paiements.length) let i = index;">
-      <div class="row">
+   <div class="container">
+      <div class="row row-5">
          <div class="col-md-3">
-            prix Annuel
+            <p class="table-title">prix Annuel</p>
          </div>
-         <div class="col-md-3" *ngFor="let paiement of paiements | slice:i*3:i*3+3;">
-            <div class= paiement-titre>
-               <p class= paiement-text-titre>
-                  {{paiement.prixAnnuel.titre}}
-               </p>
-            </div>
-            <div class= paiement-infos>
-                <p class="paiement-prix">
-                    {{paiement.prixAnnuel.prix}}€
-                 </p>
-                 <p class=paiement-details>
-                    {{paiement.prixAnnuel.details}}
-                 </p>
-            </div>
+         <div class="col-md-3">
+            <p class="table-title">frais Mobilite</p>
+         </div>
+         <div class="col-md-3">
+            <p class="table-title">frais Mobilite International</p>
+         </div>
+         <div class="col-md-3">
+            <p class="table-title">paiement Echelonne</p>
+            
+         </div>
+         <div class="col-md-3">
+            <p class="table-title">Exemple</p>
          </div>
       </div>
-      <div class="row">
-         <div class="col-md-3">
-            frais Mobilite
-         </div>
-         <div class="col-md-3" *ngFor="let paiement of paiements | slice:i*3:i*3+3;">
-            <div class= paiement-titre>
-               <p class= paiement-text-titre>
-                  {{paiement.fraisMobilite.titre}}
-               </p>
+         <div class="row row-5" *ngFor="let paiement of paiements">
+            <div class="col-md-3">
+               <div class= paiement-titre>
+                  <p class= paiement-text-titre>
+                     {{paiement.prixAnnuel.titre}}
+                  </p>
+               </div>
+               <div class= paiement-infos>
+                   <p class="paiement-prix">
+                       {{paiement.prixAnnuel.prix}}€
+                    </p>
+                    <p class=paiement-details>
+                       {{paiement.prixAnnuel.details}}
+                    </p>
+               </div>
             </div>
-            <div class="paiement-infos">
-                <p class="paiement-prix">
-                    {{paiement.fraisMobilite.prix}}€
-                 </p>
-                 <p class=paiement-details>
-                    {{paiement.fraisMobilite.details}}
-                 </p>
+   
+            <div class="col-md-3">
+               <div class= paiement-titre>
+                  <p class= paiement-text-titre>
+                     {{paiement.fraisMobilite.titre}}
+                  </p>
+               </div>
+               <div class="paiement-infos">
+                   <p class="paiement-prix">
+                       {{paiement.fraisMobilite.prix}}€
+                    </p>
+                    <p class=paiement-details>
+                       {{paiement.fraisMobilite.details}}
+                    </p>
+               </div>
             </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-3">
-            frais Mobilite International
-         </div>
-         <div class="col-md-3" *ngFor="let paiement of paiements | slice:i*3:i*3+3;">
-            <div class= paiement-titre>
-               <p class= paiement-text-titre>
-                  {{paiement.fraisMobiliteInternational.titre}}
-               </p>
+   
+            <div class="col-md-3">
+               <div class= paiement-titre>
+                  <p class= paiement-text-titre>
+                     {{paiement.fraisMobiliteInternational.titre}}
+                  </p>
+               </div>
+               <div class="paiement-infos">
+                   <p class="paiement-prix">
+                       {{paiement.fraisMobiliteInternational.prix}}€
+                    </p>
+                    <p class=paiement-details>
+                       {{paiement.fraisMobiliteInternational.details}}
+                    </p>
+               </div>
             </div>
-            <div class="paiement-infos">
-                <p class="paiement-prix">
-                    {{paiement.fraisMobiliteInternational.prix}}€
-                 </p>
-                 <p class=paiement-details>
-                    {{paiement.fraisMobiliteInternational.details}}
-                 </p>
+            <div class="col-md-3" >
+               <div class= paiement-titre>
+                  <p class= paiement-text-titre>
+                     {{paiement.paiementEchelonne.titre}}
+                  </p>
+               </div>
+               <div class="paiement-infos">
+                   <p class="paiement-prix">
+                       {{paiement.paiementEchelonne.prix}}€
+                    </p>
+                    <p class=paiement-details>
+                       {{paiement.paiementEchelonne.details}}
+                    </p>
+               </div>
             </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-3">
-            paiement Echelonne
-         </div>
-         <div class="col-md-3" *ngFor="let paiement of paiements | slice:i*3:i*3+3;">
-            <div class= paiement-titre>
-               <p class= paiement-text-titre>
-                  {{paiement.paiementEchelonne.titre}}
-               </p>
+            <div class="col-md-3">
+               <div class="paiement-exemple">
+                  <p class= paiement-nom font-weight-bold>
+                     {{paiement.exemple.nom}}
+                  </p>
+                  <p class="paiement-info ">
+                     {{paiement.exemple.info}}
+                  </p>
+               </div>
             </div>
-            <div class="paiement-infos">
-                <p class="paiement-prix">
-                    {{paiement.paiementEchelonne.prix}}€
-                 </p>
-                 <p class=paiement-details>
-                    {{paiement.paiementEchelonne.details}}
-                 </p>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-3">
-            Exemple
-         </div>
-         <div class="col-md-3" *ngFor="let paiement of paiements | slice:i*3:i*3+3;">
-            <div class="paiement-exemple">
-               <p class= paiement-nom font-weight-bold>
-                  {{paiement.exemple.nom}}
-               </p>
-               <p class="paiement-info ">
-                  {{paiement.exemple.info}}
-               </p>
-            </div>
-         </div>
-      </div>
-      <hr>
+            <hr>
    </div>
 </div>
+   
 <div *ngIf="true">
    <ul class="">
       <li *ngFor="let paiement of paiements">

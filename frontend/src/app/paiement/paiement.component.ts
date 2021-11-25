@@ -39,9 +39,6 @@ export class PaiementComponent implements OnInit {
     this.paiementService.updatePaiement(newPaiement).subscribe();
   }
 
-  numSequence(n: number): Array<number> {
-    return Array(Math.ceil((n)/3));
-  }
 
 }
 
