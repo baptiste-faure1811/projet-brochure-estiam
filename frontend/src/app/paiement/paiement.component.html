@@ -1,88 +1,86 @@
-<h1>Paiements :</h1>
 <div *ngIf="true">
+   <h1>Quel budget
+      pour étudier à Éstiam ?</h1>
+      <br>
    <div class="container">
-      <div class="row row-5">
-         <div class="col-md-3">
-            <p class="table-title">prix Annuel</p>
-         </div>
-         <div class="col-md-3">
-            <p class="table-title">frais Mobilite</p>
-         </div>
-         <div class="col-md-3">
-            <p class="table-title">frais Mobilite International</p>
-         </div>
-         <div class="col-md-3">
-            <p class="table-title">paiement Echelonne</p>
-            
-         </div>
-         <div class="col-md-3">
-            <p class="table-title">Exemple</p>
-         </div>
-      </div>
-         <div class="row row-5" *ngFor="let paiement of paiements">
+         <div class="row row-flex" *ngFor="let paiement of paiements">
             <div class="col-md-3">
-               <div class= paiement-titre>
-                  <p class= paiement-text-titre>
-                     {{paiement.prixAnnuel.titre}}
-                  </p>
-               </div>
-               <div class= paiement-infos>
-                   <p class="paiement-prix">
-                       {{paiement.prixAnnuel.prix}}€
-                    </p>
-                    <p class=paiement-details>
-                       {{paiement.prixAnnuel.details}}
-                    </p>
+               <div class="card mb-4 box-shadow h-100">
+                  <p class="table-title">prix Annuel</p>
+                  <div class= paiement-titre>
+                     <p class= paiement-text-titre>
+                        {{paiement.prixAnnuel.titre}}
+                     </p>
+                  </div>
+                  <div class= paiement-infos>
+                      <p class="paiement-prix">
+                          {{paiement.prixAnnuel.prix}}€
+                       </p>
+                       <p class=paiement-details>
+                          {{paiement.prixAnnuel.details}}
+                       </p>
+                  </div>
                </div>
             </div>
    
             <div class="col-md-3">
-               <div class= paiement-titre>
-                  <p class= paiement-text-titre>
-                     {{paiement.fraisMobilite.titre}}
-                  </p>
-               </div>
-               <div class="paiement-infos">
-                   <p class="paiement-prix">
-                       {{paiement.fraisMobilite.prix}}€
-                    </p>
-                    <p class=paiement-details>
-                       {{paiement.fraisMobilite.details}}
-                    </p>
+               <div class="card mb-4 box-shadow h-100">
+                  <p class="table-title">Acompte à l'insciption</p>
+                  <div class= paiement-titre>
+                     <p class= paiement-text-titre>
+                        {{paiement.accompte.titre}}
+                     </p>
+                  </div>
+                  <div class="paiement-infos">
+                      <p class="paiement-prix">
+                          {{paiement.accompte.prix}}€
+                       </p>
+                       <p class=paiement-details>
+                          {{paiement.accompte.details}}
+                       </p>
+                  </div>
                </div>
             </div>
    
             <div class="col-md-3">
-               <div class= paiement-titre>
-                  <p class= paiement-text-titre>
-                     {{paiement.fraisMobiliteInternational.titre}}
-                  </p>
-               </div>
-               <div class="paiement-infos">
-                   <p class="paiement-prix">
-                       {{paiement.fraisMobiliteInternational.prix}}€
-                    </p>
-                    <p class=paiement-details>
-                       {{paiement.fraisMobiliteInternational.details}}
-                    </p>
+               <div class="card mb-4 box-shadow h-100">
+                  <p class="table-title">frais Mobilite International</p>
+                  <div class= paiement-titre>
+                     <p class= paiement-text-titre>
+                        {{paiement.fraisMobiliteInternational.titre}}
+                     </p>
+                  </div>
+                  <div class="paiement-infos">
+                      <p class="paiement-prix">
+                          {{paiement.fraisMobiliteInternational.prix}}€
+                       </p>
+                       <p class=paiement-details>
+                          {{paiement.fraisMobiliteInternational.details}}
+                       </p>
+                  </div>
                </div>
             </div>
             <div class="col-md-3" >
-               <div class= paiement-titre>
-                  <p class= paiement-text-titre>
-                     {{paiement.paiementEchelonne.titre}}
-                  </p>
-               </div>
-               <div class="paiement-infos">
-                   <p class="paiement-prix">
-                       {{paiement.paiementEchelonne.prix}}€
-                    </p>
-                    <p class=paiement-details>
-                       {{paiement.paiementEchelonne.details}}
-                    </p>
+               <div class="card mb-4 box-shadow h-100">
+                  <p class="table-title">paiement Echelonne</p>
+                  <div class= paiement-titre>    
+                     <p class= paiement-text-titre>
+                        {{paiement.paiementEchelonne.titre}}
+                     </p>
+                  </div>
+                  <div class="paiement-infos">
+                      <p class="paiement-prix">
+                          {{paiement.paiementEchelonne.prix}}€
+                       </p>
+                       <p class=paiement-details>
+                          {{paiement.paiementEchelonne.details}}
+                       </p>
+                  </div>
                </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+               <p class="table-title">Exemple</p>
                <div class="paiement-exemple">
                   <p class= paiement-nom font-weight-bold>
                      {{paiement.exemple.nom}}
@@ -90,43 +88,22 @@
                   <p class="paiement-info ">
                      {{paiement.exemple.info}}
                   </p>
+                  <br>
+                  <br>
+                  <p class=paiement-details>À l’inscription {{paiement.accompte.prix}}€</p>
+                  <p class=paiement-details>puis 10 × {{paiement.paiementEchelonne.prix}}€</p>
                </div>
+            </div>
+            <div class="col-md-3 admin-button" *ngIf="true">
+               <button (click)="deletePaiement(paiement)">supprimer</button>
+               <a routerLink="/detail/{{paiement._id}}">
+               Modifier
+               </a>
             </div>
             <hr>
    </div>
 </div>
    
-<div *ngIf="true">
-   <ul class="">
-      <li *ngFor="let paiement of paiements">
-         <h2>Exemple</h2>
-         <h3>nom : {{paiement.exemple.nom}}</h3>
-         <p>info : {{paiement.exemple.info}}</p>
-         <h2>Prix Annuel</h2>
-         <h3>titre : {{paiement.prixAnnuel.titre}}</h3>
-         <p>prix : {{paiement.prixAnnuel.prix}}</p>
-         <p>details : {{paiement.prixAnnuel.details}}</p>
-         <h2>Frais Mobilite International</h2>
-         <h3>titre : {{paiement.fraisMobiliteInternational.titre}}</h3>
-         <p>prix : {{paiement.fraisMobiliteInternational.prix}}</p>
-         <p>details : {{paiement.fraisMobiliteInternational.details}}</p>
-         <h2>Frais Mobilite</h2>
-         <h3>titre : {{paiement.fraisMobilite.titre}}</h3>
-         <p>prix : {{paiement.fraisMobilite.prix}}</p>
-         <p>details : {{paiement.fraisMobilite.details}}</p>
-         <h2>PaiementEchelonne</h2>
-         <h3>titre : {{paiement.paiementEchelonne.titre}}</h3>
-         <p>prix : {{paiement.paiementEchelonne.prix}}</p>
-         <p>details : {{paiement.paiementEchelonne.details}}</p>
-         <div>
-            <button (click)="deletePaiement(paiement)">supprimer</button>
-            <a routerLink="/detail/{{paiement._id}}">
-            Modifier
-            </a>
-         </div>
-      </li>
-   </ul>
-   <a routerLink="/creation">
+   <a routerLink="/creation" *ngIf="true">
    Créer
    </a>
-</div>

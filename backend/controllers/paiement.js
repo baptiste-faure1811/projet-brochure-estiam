@@ -33,10 +33,10 @@ module.exports.postPaiement = async (req, res) => {
         prix: req.body.prixAnnuel.prix,
         details: req.body.prixAnnuel.details
       },
-      fraisMobilite: {
-        titre: req.body.fraisMobilite.titre,
-        prix: req.body.fraisMobilite.prix,
-        details: req.body.fraisMobilite.details
+      accompte: {
+        titre: req.body.accompte.titre,
+        prix: req.body.accompte.prix,
+        details: req.body.accompte.details
       },
       fraisMobiliteInternational: {
         titre: req.body.fraisMobiliteInternational.titre,
@@ -88,10 +88,10 @@ module.exports.updatePaiement = async (req, res) => {
           prix: req.body.prixAnnuel.prix,
           details: req.body.prixAnnuel.details
         },
-        fraisMobilite:{
-          titre: req.body.fraisMobilite.titre,
-          prix: req.body.fraisMobilite.prix,
-          details: req.body.fraisMobilite.details
+        accompte:{
+          titre: req.body.accompte.titre,
+          prix: req.body.accompte.prix,
+          details: req.body.accompte.details
         },
         fraisMobiliteInternational: {
           titre: req.body.fraisMobiliteInternational.titre,

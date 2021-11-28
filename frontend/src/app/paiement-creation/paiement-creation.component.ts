@@ -20,7 +20,7 @@ export class PaiementCreationComponent implements OnInit {
       prix: null,
       details: ""
     },
-    fraisMobilite: {
+    accompte: {
       titre: "",
       prix: null,
       details: ""

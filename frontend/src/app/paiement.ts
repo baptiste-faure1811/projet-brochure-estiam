@@ -21,7 +21,7 @@ export interface Paiement {
             type: String
         }
     },
-    fraisMobilite: {
+    accompte: {
         titre: {
             type: String
         },

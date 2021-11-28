@@ -37,10 +37,10 @@ export class PaiementService {
         prix: paiement.prixAnnuel.prix,
         details: paiement.prixAnnuel.details
       },
-      fraisMobilite: {
-        titre: paiement.fraisMobilite.titre,
-        prix: paiement.fraisMobilite.prix,
-        details: paiement.fraisMobilite.details
+      accompte: {
+        titre: paiement.accompte.titre,
+        prix: paiement.accompte.prix,
+        details: paiement.accompte.details
       },
       fraisMobiliteInternational: {
         titre: paiement.fraisMobiliteInternational.titre,
@@ -75,10 +75,10 @@ export class PaiementService {
         prix: newPaiement.prixAnnuel.prix,
         details: newPaiement.prixAnnuel.details
       },
-      fraisMobilite: {
-        titre: newPaiement.fraisMobilite.titre,
-        prix: newPaiement.fraisMobilite.prix,
-        details: newPaiement.fraisMobilite.details
+      accompte: {
+        titre: newPaiement.accompte.titre,
+        prix: newPaiement.accompte.prix,
+        details: newPaiement.accompte.details
       },
       fraisMobiliteInternational: {
         titre: newPaiement.fraisMobiliteInternational.titre,

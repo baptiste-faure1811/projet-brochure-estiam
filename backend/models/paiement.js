@@ -27,10 +27,9 @@ const paiementSchema = mongoose.Schema({
         },
         details: {
             type: String,
-            required: true
         }
     },
-    fraisMobilite: {
+    accompte: {
         titre: {
             type: String,
             required: true
@@ -41,7 +40,6 @@ const paiementSchema = mongoose.Schema({
         },
         details: {
             type: String,
-            required: true
         }
     },
     fraisMobiliteInternational: {
@@ -55,7 +53,6 @@ const paiementSchema = mongoose.Schema({
         },
         details: {
             type: String,
-            required: true
         }
     },
     paiementEchelonne: {
@@ -69,7 +66,6 @@ const paiementSchema = mongoose.Schema({
         },
         details: {
             type: String,
-            required: true
         }
     },
         
