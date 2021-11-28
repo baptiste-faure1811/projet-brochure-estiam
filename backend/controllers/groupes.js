@@ -52,7 +52,7 @@ module.exports.getGroupe = async (req, res) => {
   // Get id from parameter and check if valid
   if (ObjectId.isValid(req.params.groupeID) == false) {
       // Invalid Id
-      const errorDescription = 'Please provide a valid _id.';
+      const errorDescription = 'Please provide a valid id (' + req.params.groupeID + ").";
       console.log(errorDescription);
       res.status(500);
       res.send(errorDescription);
@@ -307,10 +307,10 @@ module.exports.updateGroupe = async (req, res) => {
             return;
         }
     }
-    
+
     // Update object from database
     Groupe.updateOne({ _id: id }, updatedSchema)
-    .then(() => {
+    .then((data) => {
         // Update was successful
         res.status(200);
         console.log("Groupe with _id " + id + " successfully updated");

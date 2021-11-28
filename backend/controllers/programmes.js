@@ -203,7 +203,7 @@ module.exports.deleteProgramme = async (req, res) => {
     // Check if deleteID is a valid ObjectID
     if (ObjectId.isValid(id) == false) {
         // Invalid Id
-        const errorDescription = 'Please provide a valid id.';
+        const errorDescription = 'Please provide a valid id (' + id + ").";
         console.log(errorDescription);
         res.status(500);
         res.send(errorDescription);

@@ -12,3 +12,19 @@
 .estiamCyanText {
     color: #0099E6;
 }
+
+.arrowLink:after {
+    content: "";
+    display: block;
+    background: url("assets/arrow-up-right.svg") no-repeat;
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+    float: right;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.arrowLink {
+    color: #0099E6;
+}

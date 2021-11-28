@@ -10,6 +10,7 @@ export interface Groupe {
     _id: String;
     name: String;
     totalECTS: Number;
+    totalDuration: Number;
     programme: String;
     domaines: [Domaine];
 }

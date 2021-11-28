@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Programme } from '../../services/programmeService/programme';
+import { ProgrammeService } from '../../services/programmeService/programme.service';
 
 @Component({
   selector: 'app-programmes-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgrammesPageComponent implements OnInit {
 
-  constructor() { }
+  programmes: Programme[] = [];
+
+  constructor(private programmeService: ProgrammeService) { }
 
   ngOnInit(): void {
+    this.getAllProgrammes();
+  }
+
+  getAllProgrammes(): void {
+    this.programmeService.getAllProgrammes().subscribe(programmes => this.programmes = programmes);
   }
 
 }

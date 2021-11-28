@@ -1,0 +1,28 @@
+
+<div class="container md-px-5 px-3">
+
+    <button class="btn btn-secondary mt-5" routerLink="/">Retour</button>
+    <h2 class="fw-bold mt-3 text-center">Création d'un nouveau programme</h2>
+    
+    <div class="row">
+        <form >
+            <div class="d-flex flex-column col-6 mx-auto pt-4">
+                <div class="mb-3">
+                    <label for="programmeName" class="form-label">Nom du programme</label>
+                    <input required type="text" class="form-control" id="programmeName" #name placeholder="Saisissez le nom du programme">
+                </div>
+                <div class="mb-3">
+                    <label for="programmeYear" class="form-label">Année du programme</label>
+                    <input required type="number" min="1" max="5" step="1" class="form-control" id="programmeYear" #year placeholder="Saisissez l'année de ce programme">
+                </div>
+                <div class="mb-3">
+                    <label for="programmeDuration" class="form-label">Durée totale du programme</label>
+                    <input required type="number" min="1" max="999" step="1" class="form-control" id="programmeDuration" #totalDuration placeholder="Saisissez la durée totale de ce programme">
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/'" (click)="createProgramme(name.value, totalDuration.value, year.value)">Créer le programme</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

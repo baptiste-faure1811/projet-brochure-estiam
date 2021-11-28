@@ -1,0 +1,49 @@
+<div class="container md-px-5 px-3">
+    <button class="btn btn-secondary mt-5" routerLink="/">Retour</button>
+    <h2 class="fw-bold mt-3 text-center">Création d'un cours</h2>
+
+    <div class="row">
+        <div *ngIf='showLoading' class="col-6 mx-auto p-4 estiamBackgroundColorLight d-flex flex-column justify-content-center align-items-center mt-5" style="border-radius: 12px;">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="spinner-border estiamCyanText" role="status">
+                    <span class="visually-hidden">Récupération des informations ...</span>
+                </div>
+                <p class="p-0 m-0 mt-2">Récupération des informations ...</p>
+            </div>
+        </div>
+        <form *ngIf='!showLoading'>
+            <div class="d-flex flex-column col-6 mx-auto pt-4">
+                <div class="mb-3">
+                    <label for="coursName" class="form-label">Nom du cours</label>
+                    <input required type="text" class="form-control" id="coursName" #name placeholder="Saisissez le nom du cours">
+                </div>
+                <div class="mb-3">
+                    <label for="coursEctsCredit" class="form-label">Crédits ECTS du cours</label>
+                    <input required type="text" class="form-control" id="coursEctsCredit" #ectsCredits placeholder="Saisissez les crédits ECTS du cours">
+                </div>
+                <div class="mb-3">
+                    <label for="coursECTSCode" class="form-label">Code ECTS du cours</label>
+                    <input required type="text" class="form-control" id="coursEctsCredit" #ectsCode placeholder="Saisissez le code ECTS du cours">
+                </div>
+                <div class="mb-3">
+                    <label for="coursOldCode" class="form-label">Ancien du cours</label>
+                    <input required type="text" class="form-control" id="coursOldCode" #oldCode placeholder="Saisissez l'ancien code du cours">
+                </div>
+                <div class="mb-3">
+                    <label for="coursSemestre" class="form-label">Semestre du cours</label>
+                    <input required type="text" class="form-control" id="coursSemestre" #semestre placeholder="Saisissez le semestre du cours">
+                </div>
+                <div class="mb-3">
+                    <label for="coursDuration" class="form-label">Durée du cours</label>
+                    <input required type="text" class="form-control" id="coursDuration" #duration placeholder="Saisissez la durée du cours">
+                </div>
+                <div class="estiamBackgroundColorLight p-3 d-flex flex-row justify-content-start align-items-top" style="border-radius: 12px;">
+                    <p class="m-0 p-0 ms-2 estiamCyanText">Vous allez ajouter ce cours dans le domaine {{domaine.name}}, du groupe {{groupe.name}}, associé au programme {{programme.name}}</p>
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/'" (click)="createCours(name.value, ectsCredits.value, ectsCode.value, oldCode.value, semestre.value, duration.value)">Créer le cours</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

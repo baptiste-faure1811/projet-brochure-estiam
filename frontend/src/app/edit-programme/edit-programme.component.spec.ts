@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProgrammeYearComponent } from './programme-year.component';
+import { EditProgrammeComponent } from './edit-programme.component';
 
-describe('ProgrammeYearComponent', () => {
-  let component: ProgrammeYearComponent;
-  let fixture: ComponentFixture<ProgrammeYearComponent>;
+describe('EditProgrammeComponent', () => {
+  let component: EditProgrammeComponent;
+  let fixture: ComponentFixture<EditProgrammeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProgrammeYearComponent ]
+      declarations: [ EditProgrammeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProgrammeYearComponent);
+    fixture = TestBed.createComponent(EditProgrammeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

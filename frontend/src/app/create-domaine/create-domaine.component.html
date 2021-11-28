@@ -1,0 +1,45 @@
+<div class="container md-px-5 px-3">
+
+    <button class="btn btn-secondary mt-5" routerLink="/">Retour</button>
+    <h2 class="fw-bold mt-3 text-center">Création d'un nouveau domaine</h2>
+    
+    <div class="row">
+        <div *ngIf='showLoading' class="col-6 mx-auto p-4 estiamBackgroundColorLight d-flex flex-column justify-content-center align-items-center mt-5" style="border-radius: 12px;">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="spinner-border estiamCyanText" role="status">
+                    <span class="visually-hidden">Récupération des informations ...</span>
+                </div>
+                <p class="p-0 m-0 mt-2">Récupération des informations ...</p>
+            </div>
+        </div>
+        <form *ngIf='!showLoading'>
+            <div class="d-flex flex-column col-6 mx-auto pt-4">
+                <div class="mb-3">
+                    <label for="domaineName" class="form-label">Nom du domaine</label>
+                    <input required type="text" class="form-control" id="domaineName" #name placeholder="Saisissez le nom du domaine">
+                </div>
+                <div class="mb-3">
+                    <label for="programmeSelect" class="form-label">Programme correspondant</label>
+                    <select required id="programmeSelect" #selectedProgramme class="form-control" (change)="getCorrespondingGroupes(selectedProgramme.value)">
+                        <option value="" disabled selected>Sélectionnez un programme</option>
+                        <option *ngFor="let programme of programmes" value="{{programme._id}}">{{programme.name}}</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="groupeSelect" class="form-label">Groupe correspondant</label>
+                    <select required id="groupeSelect" #selectedGroupe class="form-control" [attr.disabled]="groupes.length == 0 ? true : null">
+                        <option value="" disabled selected>Sélectionnez un groupe</option>
+                        <option *ngFor="let groupe of groupes" value="{{groupe._id}}">{{groupe.name}}</option>
+                    </select>
+                    <div *ngIf="groupes.length == 0" class="text-warning fs-6 fst-italic mt-1">
+                        <p *ngIf="isInitial" class="m-0 p-0">Veuillez sélectionner un programme pour choisir groupe.</p>
+                        <p *ngIf="!isInitial" class="m-0 p-0">Le programme sélectionné ne possède aucun groupe.</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/'" (click)="createDomaine(name.value, selectedGroupe.value)">Créer le domaine</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
