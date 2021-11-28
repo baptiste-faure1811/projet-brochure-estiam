@@ -95,8 +95,8 @@
                </div>
             </div>
             <div class="col-md-3 admin-button" *ngIf="true">
-               <button (click)="deletePaiement(paiement)">supprimer</button>
-               <a routerLink="/detail/{{paiement._id}}">
+               <button class="buttonPaiement" (click)="deletePaiement(paiement)"> Supprimer</button>
+               <a class="buttonPaiement" routerLink="/detail/{{paiement._id}}">
                Modifier
                </a>
             </div>
@@ -104,6 +104,6 @@
    </div>
 </div>
    
-   <a routerLink="/creation" *ngIf="true">
+   <a class="buttonPaiement" routerLink="/creation" *ngIf="true">
    Créer
    </a>
