@@ -50,6 +50,7 @@
 .paiement-text-titre{
     font-weight: bold;
     font-size: large;
+    width: 100%; 
     margin: 0;
 }
 .paiement-titre{
