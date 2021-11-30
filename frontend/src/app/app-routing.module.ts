@@ -9,8 +9,8 @@ import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: 'paiement', component: PaiementComponent },
-  { path: 'detail/:id', component: PaiementDetailsComponent },
-  { path: 'creation', component: PaiementCreationComponent },
+  { path: 'paiement-detail/:id', component: PaiementDetailsComponent },
+  { path: 'paiement-creation', component: PaiementCreationComponent },
   {path: 'entreprise',component: EntrepriseComponent}
 ];
 

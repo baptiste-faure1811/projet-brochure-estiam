@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Paiement } from '../paiement';
 import { PaiementService } from '../paiement.service';
-
+import {Router} from '@angular/router';
 
 
 
@@ -15,7 +15,8 @@ export class PaiementComponent implements OnInit {
   paiements: Paiement[] = [];
 
 
-  constructor(private paiementService: PaiementService) { }
+  constructor(private paiementService: PaiementService,
+              private router: Router,) { }
 
 
 
@@ -27,18 +28,10 @@ export class PaiementComponent implements OnInit {
     this.paiementService.getPaiements().subscribe(paiements => this.paiements = paiements);
   }
 
-  addPaiement(paiement: Paiement): void {
-    this.paiementService.addPaiement(paiement).subscribe(paiement => this.paiements.push(paiement));
-  }
-
   deletePaiement(paiement: Paiement) {
     this.paiementService.deletePaiement(paiement).subscribe();
+    window.location.reload();
   }
-
-  updatePaiement(newPaiement: Paiement) {
-    this.paiementService.updatePaiement(newPaiement).subscribe();
-  }
-
 
 }
 

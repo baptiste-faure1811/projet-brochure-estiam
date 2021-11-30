@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Paiement } from '../paiement';
 import { PaiementService } from '../paiement.service';
 import { Location } from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-paiement-creation',
@@ -9,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./paiement-creation.component.css']
 })
 export class PaiementCreationComponent implements OnInit {
-
+  
   paiement = {
     exemple: {
       nom: "",
@@ -38,6 +39,7 @@ export class PaiementCreationComponent implements OnInit {
   } as unknown as Paiement;
 
   constructor(
+    private router: Router,
     private paiementService: PaiementService,
     private location: Location
   ) {}
@@ -47,10 +49,14 @@ export class PaiementCreationComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+    
   }
 
   create(): void {
     this.paiementService.addPaiement(this.paiement).subscribe();
-    this.location.back();
+    this.router.navigateByUrl('/paiement');
   }
+
+
+
 }

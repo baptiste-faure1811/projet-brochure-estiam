@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { Paiement } from '../paiement';
 import { PaiementService } from '../paiement.service';
@@ -14,6 +15,7 @@ export class PaiementDetailsComponent implements OnInit {
   paiement: Paiement | undefined;
 
   constructor(
+    private router:Router,
     private route: ActivatedRoute,
     private paiementService: PaiementService,
     private location: Location
@@ -34,10 +36,9 @@ export class PaiementDetailsComponent implements OnInit {
 
   save(): void {
     if (this.paiement) {
-      console.log(this.paiement.exemple.nom);
       this.paiementService.updatePaiement(this.paiement)
         .subscribe();
-        this.location.back();
+        this.router.navigateByUrl('/paiement');
     }
   }
 }
