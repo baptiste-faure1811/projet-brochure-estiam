@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Programme } from '../../services/programmeService/programme';
 import { ProgrammeService } from '../../services/programmeService/programme.service';
 
@@ -10,11 +11,13 @@ import { ProgrammeService } from '../../services/programmeService/programme.serv
 export class ProgrammesPageComponent implements OnInit {
 
   programmes: Programme[] = [];
+  isAdmin = this.cookieService.get('isAdmin') ?? "false";
 
-  constructor(private programmeService: ProgrammeService) { }
+  constructor(private programmeService: ProgrammeService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.getAllProgrammes();
+    console.log("isAdmin: " + this.isAdmin)
   }
 
   getAllProgrammes(): void {

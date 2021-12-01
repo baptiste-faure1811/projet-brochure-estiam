@@ -11,6 +11,7 @@ import { CreateDomaineComponent } from './create-domaine/create-domaine.componen
 import { EditDomaineComponent } from './edit-domaine/edit-domaine.component';
 import { EditCoursComponent } from './edit-cours/edit-cours.component';
 import { CreateCoursComponent } from './create-cours/create-cours.component';
+import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
 
 const routes: Routes = [
   { path: '', component: ProgrammesPageComponent },
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'edit-domaine/:domaineID', component: EditDomaineComponent },
   { path: 'edit-cours/:coursID', component: EditCoursComponent },
   { path: 'create-cours/:domaineID', component: CreateCoursComponent },
+  { path: 'admin-log-in', component: AdminLogInComponent },
+  { path: 'admin-log-in/:errorID', component: AdminLogInComponent },
 ];
 
 @NgModule({

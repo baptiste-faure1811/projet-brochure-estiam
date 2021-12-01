@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { CreateDomaineComponent } from './create-domaine/create-domaine.componen
 import { EditDomaineComponent } from './edit-domaine/edit-domaine.component';
 import { EditCoursComponent } from './edit-cours/edit-cours.component';
 import { CreateCoursComponent } from './create-cours/create-cours.component';
+import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { CreateCoursComponent } from './create-cours/create-cours.component';
     EditDomaineComponent,
     EditCoursComponent,
     CreateCoursComponent,
+    AdminLogInComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { CreateCoursComponent } from './create-cours/create-cours.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [EntrepriseService],
+  providers: [EntrepriseService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

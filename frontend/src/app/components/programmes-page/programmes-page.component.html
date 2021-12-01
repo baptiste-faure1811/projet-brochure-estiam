@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div *ngIf='programmes.length != 0' class="p-3 estiamBackgroundColorLight mt-4" style="border-radius: 12px;">
+    <div *ngIf='programmes.length != 0 && isAdmin == "true"' class="p-3 estiamBackgroundColorLight mt-4" style="border-radius: 12px;">
         <h4 class="fw-semibold text-center ">Ajoutez des éléments</h4>
         <div class="d-flex justify-content-center align-items-center my-2 py-2">
             <button class="btn btn-primary mx-auto" routerLink="/create-programme">Ajouter un nouveau programme</button>

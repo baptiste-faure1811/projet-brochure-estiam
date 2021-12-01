@@ -1,0 +1,24 @@
+<div class="container md-px-5 px-3">
+    <button class="btn btn-secondary mt-5" routerLink="/">Retour</button>
+    <h2 class="fw-bold mt-3 text-center">Espace de connexion</h2>
+    <h6 class="fw-bold mt-3 text-center">Veuillez vous identifier pour passer en mode administrateur</h6>
+
+    <div class="row">
+        <form >
+            <div class="d-flex flex-column col-6 mx-auto pt-4">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input required type="email" class="form-control" id="email" #email placeholder="Saisissez votre email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input required type="password" class="form-control" id="password" #password placeholder="Saisissez votre mot de passe">
+                </div>
+                <p *ngIf="id == '1'" class="fw-bold mt-3 text-center text-danger">L'adresse email et/ou le mot de passe sont incorrect.</p>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary mt-3" (click)="checkCredentials(email.value, password.value)">Connexion</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
