@@ -27,10 +27,12 @@ export class EntrepriseComponent implements OnInit {
 
   deleteEntreprise(entreprise: Entreprise) {
     this.entrepriseService.deleteEntreprise(entreprise).subscribe();
+    window.location.reload();
   }
 
   updateEntreprise(newName: string, id: string) {
     this.entrepriseService.updateEntreprise(newName, id).subscribe();
+    window.location.reload();
   }
 
 }

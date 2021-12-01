@@ -10,6 +10,7 @@ import { PaiementDetailsComponent } from './paiement-details/paiement-details.co
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { PaiementCreationComponent } from './paiement-creation/paiement-creation.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PaiementCreationComponent } from './paiement-creation/paiement-creation
     PaiementComponent,
     PaiementDetailsComponent,
     PaiementCreationComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
