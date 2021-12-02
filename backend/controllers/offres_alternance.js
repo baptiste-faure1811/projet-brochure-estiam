@@ -1,5 +1,5 @@
 
-const offre_alternance=require('../model/offre_alternance')
+const offre_alternance=require('../models/offre_alternance')
 
 //Alimentation de la bdd
  exports.createoffrealternances=(req,res)=>{

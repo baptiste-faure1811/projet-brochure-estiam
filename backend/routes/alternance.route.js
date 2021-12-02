@@ -1,7 +1,7 @@
 const express=require('express')
 const router=express.Router()
-const offreAlternancecontrolleur=require('../controlleur/offres_alternance')
-const descalternance=require('../controlleur/desc_alternance')
+const offreAlternancecontrolleur=require('../controllers/offres_alternance')
+const descalternance=require('../controllers/desc_alternance')
 
 router.post('/offres',offreAlternancecontrolleur.createoffrealternances)
 router.post('/descalternance',descalternance.create_descalternance)

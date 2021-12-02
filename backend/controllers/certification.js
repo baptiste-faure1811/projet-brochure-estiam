@@ -1,5 +1,5 @@
-const { update } = require('../modeles/modele')
-const certif = require('../modeles/modele') // importer le dossier modeles
+const { update } = require('../models/modele')
+const certif = require('../models/modele') // importer le dossier modeles
 
 
 exports.createcertif = (req,res)=>{ // creer un un modele a la bd

@@ -1,0 +1,60 @@
+<div class="container">
+    <form *ngIf="descalternances.length<1 && !simlpeuser">
+        <fieldset>
+            <legend style="color: slateblue;">Creation</legend>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Url image</label>
+            <input type="text" class="form-control" id="urlimage" #url_image required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"> dsecription offre</label>
+            <textarea class="form-control" id="desc" rows="3" #desc required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="Onadddescalternance(url_image.value,desc.value)">SEND</button>   
+       </fieldset>
+    </form>
+</div>
+<br><br>
+<div class="container">
+    <form>
+    <table class="table table-success table-striped" *ngIf="descalternances.length>0 && !simlpeuser" >
+        <thead>
+            <legend style="color:red">Suppression</legend>
+        <tr>
+            <th scope="col">Url image</th>
+            <th scope="col">Description</th>
+            <th scope="col">##</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let descalternance of descalternances">    
+            <tr>
+                <td>{{descalternance.image}}</td>
+                <td>{{descalternance.text}}</td>
+                <td><button type="submit" class="btn btn-outline-danger" (click)="Ondeletedescalternance(descalternance)" style="">
+                    DELETE
+                </button></td>
+                
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <form *ngIf="descalternances.length>0 && !simlpeuser" >
+            <legend style="color: blue;">MODIFICATION</legend>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Url image</label>
+                <input type="text" class="form-control" id="urlimage"  #url_image1 required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"> Texte dsecriptife</label>
+                <textarea class="form-control" id="desc" rows="3" #desc1 required></textarea>
+            </div>
+                  <button type="submit" class="btn btn-secondary" (click)="Onupdatedescalternance(url_image1.value,desc1.value)" >
+                      UPDATE
+                  </button>  
+      </form>
+      </div>
+      <br><br>

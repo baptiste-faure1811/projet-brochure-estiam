@@ -1,5 +1,5 @@
 
-const desc_alternance=require('../model/desc_alternance')
+const desc_alternance=require('../models/desc_alternance')
 //creation
 exports.create_descalternance=(req,res)=>{
 

@@ -1,0 +1,23 @@
+#card{
+    
+    margin: 2rem;
+    max-width: 18rem; 
+    background-color:#0099E6;
+    transition: all 0.2s ease-in;
+}
+#card:hover{
+    transform:scale(1.1);
+}
+
+legend{
+
+    color:rgb(127, 218, 218);
+}
+#bt1{
+    margin-left: 50px;
+}
+#body{
+    margin: 0px;
+    background-color:#FFFFFF;
+    justify-content: center;
+}

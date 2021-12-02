@@ -15,6 +15,11 @@ import { AdminLogInComponent } from './components/admin-log-in/admin-log-in.comp
 import { PaiementComponent } from './components/paiement/paiement.component';
 import { PaiementCreationComponent } from './components/paiement-creation/paiement-creation.component';
 import { PaiementDetailsComponent } from './components/paiement-details/paiement-details.component';
+import { CudComponent } from './components/cud/cud.component';
+import { CuddescComponent } from './components/cuddesc/cuddesc.component';
+import { OffrealternanceComponent } from './components/offrealternance/offrealternance.component';
+import { DescalternanceComponent } from './components/descalternance/descalternance.component';
+
 
 const routes: Routes = [
   { path: 'programmes', component: ProgrammesPageComponent },
@@ -32,7 +37,12 @@ const routes: Routes = [
   { path: 'paiement-detail/:id', component: PaiementDetailsComponent },
   { path: 'paiement-creation', component: PaiementCreationComponent },
   { path: 'entreprises', component: EntrepriseComponent },
-];
+  {path: 'alternance',component:DescalternanceComponent},
+  {path: 'offres',component:OffrealternanceComponent},
+  {path:'cud',component:CudComponent},
+  {path: 'cuddesc',component: CuddescComponent}
+]
+
 
 @NgModule({
   declarations: [],

@@ -23,6 +23,11 @@ import { PaiementComponent } from './components/paiement/paiement.component';
 import { PaiementDetailsComponent } from './components/paiement-details/paiement-details.component';
 import { PaiementCreationComponent } from './components/paiement-creation/paiement-creation.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CudComponent } from './components/cud/cud.component';
+import { CuddescComponent } from './components/cuddesc/cuddesc.component';
+import { OffrealternanceComponent } from './components/offrealternance/offrealternance.component';
+import { DescalternanceComponent } from './components/descalternance/descalternance.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +48,11 @@ import { FooterComponent } from './components/footer/footer.component';
     PaiementDetailsComponent,
     PaiementCreationComponent,
     FooterComponent,
+    OffrealternanceComponent,
+    DescalternanceComponent,
+    CudComponent,
+    CuddescComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,

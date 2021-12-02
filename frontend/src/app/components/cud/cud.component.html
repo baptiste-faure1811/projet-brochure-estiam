@@ -1,0 +1,93 @@
+<div class="container" >
+    <form >
+       <legend style="color:blue;">Creation des offres</legend>
+    <div class="mb-3">
+       <label for="exampleFormControlInput1" class="form-label">Nom entreprise</label>
+       <input type="text" class="form-control" id="nom_entreprise" #nom_entreprise required>
+    </div>
+     <div class="mb-3">
+       <label for="exampleFormControlTextarea1" class="form-label"> dsecription offre</label>
+       <textarea class="form-control" id="desc_offre" rows="3" #desc_offre required></textarea>
+   </div>
+   <div class="mb-3">
+       <label for="exampleFormControlInput1" class="form-label">Poste</label>
+       <input type="text" class="form-control" id="poste" #poste required>
+    </div>
+    <div class="mb-3">
+       <label for="exampleFormControlInput1" class="form-label">Profil recherche</label>
+       <input type="text" class="form-control" id="profil_recherche" #profil_recherche required>
+    </div>
+     <div class="mb-3">
+       <label for="exampleFormControlInput1" class="form-label">Lien candidature</label>
+       <input type="text" class="form-control" id="lien_cand" #lien_cand required>
+     </div>
+     <button type="submit" class="btn btn-primary" (click)="Onaddoffrealternance(nom_entreprise.value,desc_offre.value ,poste.value,profil_recherche.value,lien_cand.value)"
+     routerLink="/offres">SEND</button>
+    </form>           
+   </div>          
+   <br><br>
+   
+
+   <div class="container" >
+  <form *ngIf="offrealternances.length>0 ">
+    <legend style="color:blue;">Modification</legend>
+        <select class="form-select" aria-label="Default select example" #selectedoffre>
+            <option disabled selected>Sélectionnez une entreprise</option>
+            <option *ngFor="let offrealternance of offrealternances" value="{{offrealternance.nom_entreprise}}" #name_recherche>{{offrealternance.nom_entreprise}}></option>        
+        </select>
+            <div class="mb-3">
+               <label for="exampleFormControlInput1" class="form-label">Nom entreprise</label>
+               <input type="text" class="form-control" id="nom_entreprise" #nom_entreprise1 required>
+             </div>
+             <div class="mb-3">
+               <label for="exampleFormControlTextarea1" class="form-label"> dsecription offre</label>
+               <textarea class="form-control" id="desc_offre" rows="3" #desc_offre1 required></textarea>
+           </div>
+           <div class="mb-3">
+               <label for="exampleFormControlInput1" class="form-label">Poste</label>
+               <input type="text" class="form-control" id="poste" #poste1 required>
+             </div>
+             <div class="mb-3">
+               <label for="exampleFormControlInput1" class="form-label">Profil recherche</label>
+               <input type="text" class="form-control" id="profil_recherche" #profil_recherche1 required>
+             </div>
+             <div class="mb-3">
+               <label for="exampleFormControlInput1" class="form-label">Lien candidature</label>
+               <input type="text" class="form-control" id="lien_cand" #lien_cand1 required>
+             </div>
+             <button type="submit" class="btn btn-secondary" (click)="Onupdateoffrealternance(selectedoffre.value ,nom_entreprise1.value,desc_offre1.value ,poste1.value,profil_recherche1.value,lien_cand1.value)"
+             routerLink="/offres">UPDATE</button>           
+</form>
+</div>
+
+<br><br>
+<div class="container">
+<form>
+
+<table class="table"  *ngIf="offrealternances.length>0 ">
+    <thead>
+        <legend style="color: red;">Suppression</legend>
+      <tr>
+        <th scope="col">Nom entreprise</th>
+        <th scope="col">Description</th>
+        <th scope="col">Poste</th>
+        <th scope="col">Profil recherché</th>
+        <th scope="col">Lien de candidature</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let offrealternance of offrealternances">    
+        <tr>
+            <td>{{offrealternance.nom_entreprise}}</td>
+            <td>{{offrealternance.desc_offre}}</td>
+            <td>{{offrealternance.poste}}</td>
+            <td>{{offrealternance.profil_recherche}}</td>
+            <td>{{offrealternance.lien_cand}}</td>
+            <td><button type="submit" class="btn btn-outline-danger" (click)="Ondeleteoffrealternance(offrealternance)" routerLink="/offres">
+                DELETE
+            </button></td>
+        </tr>
+    </tbody>
+</table>
+</form>
+</div>
+<br><br><br>

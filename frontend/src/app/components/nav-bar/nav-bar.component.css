@@ -1,0 +1,109 @@
+#nv1{
+    background-color:#0099E6;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    
+   
+}
+strong{
+    color:#FFFFFF;
+    margin-left: -8.5rem;
+    margin-right: 2rem;
+    font-size: 40px;
+    font-family: Arial Black;  
+}
+#i{
+     color: #FFEE00;
+     
+}
+.nv{
+    color:#FFFFFF;
+    font-weight: bold;
+    
+}
+.nv:hover{
+    color: #0099E6;
+}
+.nv3{
+    color:#FFFFFF;
+    font-weight: bold;
+    
+}
+.nv3:hover{
+    color: #004080;
+}
+#nv2{
+    background-color:#004080;      
+}
+#navbarNavAltMarkup{
+    margin-left: 12rem;
+    
+}
+
+.estiam-logo{
+    width: 150px;
+    margin-left: 3%;
+}
+
+img{
+    font-size: 10;
+}
+#pg{
+    color: white;
+    font-weight: bold;   
+}
+.far, .fas{
+    opacity: 0.6;
+}
+#ps{
+    margin-left: 5rem;
+}
+#menu ul {
+margin:0;
+padding:0;
+list-style-type:none;
+text-align:left;
+}
+#item li {
+float:left;
+margin:auto;
+padding:0;
+background-color:#004080; 
+color: white;
+padding-right: 3rem;
+padding-left: 1rem;
+padding-bottom: 1rem;
+padding-top: 1rem;
+
+
+}
+#item li:hover{
+    background-color: black;
+   
+
+}
+#menu li a {
+display:block;
+
+color:white;
+text-decoration:none;
+
+}
+#menu li a:hover {
+color:cadetblue;;
+}
+#menu ul li ul {
+display:none;
+}
+#menu ul li:hover ul {
+display:block;
+}
+#menu li:hover ul li {
+float:none;
+}
+#menu li ul {
+position:absolute;
+}
+#menu {
+height:50px;
+}

@@ -1,0 +1,26 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col md-4" id="bt1">
+        <button type="button" routerLink="/cuddesc" 
+           data-bs-toggle="button" autocomplete="off" class="btn btn-primary btn-lg" >
+           Créer supprimer modifier une offre
+        </button>
+    </div>
+    
+    </div>
+  </div>
+<br>
+<div class="container" *ngIf="descalternances.length>0" >
+<span *ngFor="let Descalternance of descalternances" >
+
+   <img src= "{{Descalternance.image}}"  alt="commen marche l'alternance" id="mg">
+                 
+              {{Descalternance.text}}
+        
+    
+</span>
+</div>
+<br><br>
+
+    
