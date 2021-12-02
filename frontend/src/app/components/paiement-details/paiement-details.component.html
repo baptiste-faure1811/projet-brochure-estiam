@@ -1,0 +1,62 @@
+<div *ngIf="paiement">
+	<div class="container">
+		<div class="row row-flex">
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">prix Annuel</p>
+					<div class=paiement-titre>
+						<input class=paiement-text-titre id="titre-prixAnnuel" [(ngModel)]="paiement.prixAnnuel.titre" placeholder={{paiement.prixAnnuel.titre}}/> </div>
+					<div class=paiement-infos>
+						<input class="paiement-prix" type="number" onkeydown="return event.keyCode !== 69" id="prix-prixAnnuel" [(ngModel)]="paiement.prixAnnuel.prix" placeholder={{paiement.prixAnnuel.prix}}/>
+						<textarea class=paiement-details id="details-prixAnnuel" [(ngModel)]="paiement.prixAnnuel.details" placeholder={{paiement.prixAnnuel.details}}></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">Acompte à l'insciption</p>
+					<div class=paiement-titre>
+						<input class=paiement-text-titre id="titre-accompte" [(ngModel)]="paiement.accompte.titre" placeholder={{paiement.accompte.titre}}/> </div>
+					<div class="paiement-infos">
+						<input class="paiement-prix" type="number" onkeydown="return event.keyCode !== 69" id="prix-accompte" [(ngModel)]="paiement.accompte.prix" placeholder={{paiement.accompte.prix}}/>
+						<textarea class=paiement-details id="details-accompte" [(ngModel)]="paiement.accompte.details" placeholder={{paiement.accompte.details}}></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">frais Mobilite International</p>
+					<div class=paiement-titre>
+						<input class=paiement-text-titre id="titre-fraisMobilite-International" [(ngModel)]="paiement.fraisMobiliteInternational.titre" placeholder={{paiement.fraisMobiliteInternational.titre}}/> </div>
+					<div class="paiement-infos">
+						<input class="paiement-prix" type="number" onkeydown="return event.keyCode !== 69" id="prix-fraisMobilite-International" [(ngModel)]="paiement.fraisMobiliteInternational.prix" placeholder={{paiement.fraisMobiliteInternational.prix}}/>
+						<textarea class=paiement-details id="details-fraisMobilite-International" [(ngModel)]="paiement.fraisMobiliteInternational.details" placeholder={{paiement.fraisMobiliteInternational.details}}></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">paiement Echelonne</p>
+					<div class=paiement-titre>
+						<input class=paiement-text-titre id="titre-paiementEchelonne" [(ngModel)]="paiement.paiementEchelonne.titre" placeholder={{paiement.paiementEchelonne.titre}}/> </div>
+					<div class="paiement-infos">
+						<input class="paiement-prix" type="number" onkeydown="return event.keyCode !== 69" id="prix-paiementEchelonne" [(ngModel)]="paiement.paiementEchelonne.prix" placeholder={{paiement.paiementEchelonne.prix}}/>
+						<textarea class=paiement-details id="details-paiementEchelonne" [(ngModel)]="paiement.paiementEchelonne.details" placeholder={{paiement.paiementEchelonne.details}}></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<p class="table-title">Exemple</p>
+				<div class="paiement-exemple">
+					<input class=paiement-nom id="nom-exemple" [(ngModel)]="paiement.exemple.nom" placeholder={{paiement.exemple.nom}}/>
+					<br>
+					<textarea class="paiement-info " id="info-exemple" [(ngModel)]="paiement.exemple.info" placeholder={{paiement.exemple.info}}></textarea>
+					<br> </div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<button class="buttonPaiement" (click)="goBack()">Annuler</button>
+	<button class="buttonPaiement" (click)="save()">Enregistrer</button>
+</div>

@@ -22,23 +22,17 @@ export class EntrepriseComponent implements OnInit {
   }
 
   addEntreprise(name: string): void {
-    this.entrepriseService.addEntreprise(name).subscribe(entreprise => {
-        this.entreprises.push(entreprise);
-        console.log("added");
-    });
+    this.entrepriseService.addEntreprise(name).subscribe(entreprise => this.entreprises.push(entreprise));
   }
 
   deleteEntreprise(entreprise: Entreprise) {
-    this.entrepriseService.deleteEntreprise(entreprise).subscribe(entreprise => {
-      this.getEntreprises();
-    });
+    this.entrepriseService.deleteEntreprise(entreprise).subscribe();
+    window.location.reload();
   }
 
   updateEntreprise(newName: string, id: string) {
-    this.entrepriseService.updateEntreprise(newName, id).subscribe(entreprise => {
-        this.getEntreprises();
-    });
+    this.entrepriseService.updateEntreprise(newName, id).subscribe();
+    window.location.reload();
   }
-  
 
 }

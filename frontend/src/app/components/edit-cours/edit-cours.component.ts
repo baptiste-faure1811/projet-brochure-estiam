@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Cours } from '../services/programmeService/programme';
-import { ProgrammeService } from '../services/programmeService/programme.service';
+import { Cours } from '../../services/programmeService/programme';
+import { ProgrammeService } from '../../services/programmeService/programme.service';
 
 @Component({
   selector: 'app-edit-cours',

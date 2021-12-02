@@ -1,36 +1,34 @@
-
-<ul class="">
-    <li *ngFor="let entreprise of entreprises">
-        <div style="display: flex; flex-direction: row; justify-content: start; align-items: center; margin-top: 10px;">
-            {{entreprise.name}}
-            <button (click)="deleteEntreprise(entreprise)" style="">
-                Supprimer
-            </button>
-        </div>
-    </li>
-</ul>
-
-<div>
-  <label for="new-hero">Nom de l'entreprise: </label>
-  <input id="new-hero" #entrepriseName />
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="addEntreprise(entrepriseName.value); entrepriseName.value=''">
-    Ajouter l'entreprise
-  </button>
-</div>
-
-
-<div style="margin-top: 40px;">
-    <h2>Modifier une entreprise :</h2>
-    <select name="" id="" #selectedEntreprise>
-        <option value="" disabled selected>Sélectionnez une entreprise</option>
-        <option *ngFor="let entreprise of entreprises" value="{{entreprise._id}}">{{entreprise.name}}</option>
-    </select>
-    <input id="new-name" #newEntrepriseName />
-
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button class="" (click)="updateEntreprise(newEntrepriseName.value, selectedEntreprise.value); entrepriseName.value=''">
-        Modifier l'entreprise
-    </button> 
-</div>
+<div class="container">
+    <h1>Entreprises partenaires</h1>
+    <h2>actuellement employeurs</h2>
+    <h2>de nos étudiants</h2>
+    <p>Nos programmes sont mis au point avec des professionnels pour coller au plus près aux besoins et aux attentes des entreprises.</p>
+    <p>Cela permet de trouver des alternances parmi les plus grandes entreprises françaises et internationales</p>
+    <hr>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let entreprise of entreprises" style=" justify-content: space-between; display: flex;">
+        <p class="enterprise-name" style="font-size: large;">{{entreprise.name}}</p>
+        <button class="deleteEntreprise" *ngIf="true" (click)="deleteEntreprise(entreprise)" style=""> Supprimer </button>
+      </div>
+    </div>
+    <hr>
+    <div *ngIf="true">
+      <div>
+        <h2>Ajouter une entreprise :</h2>
+        <label for="new-hero">Nom de l'entreprise: </label>
+        <input id="new-hero" #entrepriseName />
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button class="add-button" (click)="addEntreprise(entrepriseName.value); entrepriseName.value=''"> Ajouter l'entreprise </button>
+      </div>
+      <div style="margin-top: 40px;">
+        <h2>Modifier une entreprise :</h2>
+        <select name="" id="" #selectedEntreprise>
+          <option value="" disabled selected>Sélectionnez une entreprise</option>
+          <option *ngFor="let entreprise of entreprises" value="{{entreprise._id}}">{{entreprise.name}}</option>
+        </select>
+        <input id="new-name" #newEntrepriseName />
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button class="" (click)="updateEntreprise(newEntrepriseName.value, selectedEntreprise.value); entrepriseName.value=''"> Modifier l'entreprise </button>
+      </div>
+    </div>
+  </div>

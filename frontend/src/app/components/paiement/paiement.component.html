@@ -1,0 +1,76 @@
+<div *ngIf="true">
+	<h1>Quel budget
+      pour étudier à Éstiam ?</h1>
+	<br>
+	<div class="container">
+		<div class="row row-flex" *ngFor="let paiement of paiements">
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">prix Annuel</p>
+					<div class=paiement-titre>
+						<p class=paiement-text-titre>{{paiement.prixAnnuel.titre}}</p>
+					</div>
+					<div class=paiement-infos>
+						<p class="paiement-prix">{{paiement.prixAnnuel.prix}}€</p>
+						<p class=paiement-details>{{paiement.prixAnnuel.details}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">Acompte à l'insciption</p>
+					<div class=paiement-titre>
+						<p class=paiement-text-titre>{{paiement.accompte.titre}}</p>
+					</div>
+					<div class="paiement-infos">
+						<p class="paiement-prix">{{paiement.accompte.prix}}€</p>
+						<p class=paiement-details>{{paiement.accompte.details}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">frais Mobilite International</p>
+					<div class=paiement-titre>
+						<p class=paiement-text-titre>{{paiement.fraisMobiliteInternational.titre}}</p>
+					</div>
+					<div class="paiement-infos">
+						<p class="paiement-prix">{{paiement.fraisMobiliteInternational.prix}}€</p>
+						<p class=paiement-details>{{paiement.fraisMobiliteInternational.details}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card mb-4 box-shadow h-100">
+					<p class="table-title">paiement Echelonne</p>
+					<div class=paiement-titre>
+						<p class=paiement-text-titre>{{paiement.paiementEchelonne.titre}}</p>
+					</div>
+					<div class="paiement-infos">
+						<p class="paiement-prix">{{paiement.paiementEchelonne.prix}}€</p>
+						<p class=paiement-details>{{paiement.paiementEchelonne.details}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<p class="table-title">Exemple</p>
+				<div class="paiement-exemple">
+					<p class=paiement-nom font-weight-bold>{{paiement.exemple.nom}}</p>
+					<p class="paiement-info ">{{paiement.exemple.info}}</p>
+					<br>
+					<br>
+					<p class=paiement-details>À l’inscription {{paiement.accompte.prix}}€</p>
+					<p class=paiement-details>puis 10 × {{paiement.paiementEchelonne.prix}}€</p>
+				</div>
+			</div>
+			<div class="col-md-3 admin-button" *ngIf="true">
+				<button class="buttonPaiement" (click)="deletePaiement(paiement)">Supprimer</button> <a class="buttonPaiement" routerLink="/paiement-detail/{{paiement._id}}">
+               Modifier
+               </a>
+			</div>
+			<hr>
+		</div>
+	</div> <a class="buttonPaiement" routerLink="/paiement-creation" *ngIf="true">
+   Créer
+   </a>

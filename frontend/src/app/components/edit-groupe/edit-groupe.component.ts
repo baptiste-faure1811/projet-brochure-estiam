@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Groupe, Programme } from '../services/programmeService/programme';
-import { ProgrammeService } from '../services/programmeService/programme.service';
+import { Groupe, Programme } from '../../services/programmeService/programme';
+import { ProgrammeService } from '../../services/programmeService/programme.service';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 

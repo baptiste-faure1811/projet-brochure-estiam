@@ -1,0 +1,36 @@
+.container{
+    padding: 50px;
+}
+
+.buttonPaiement, button {
+    background-color: #0099E6;
+    border: none;
+    
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  p{
+      margin: 0;
+  }
+  input, select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+.h2{
+    font-size: xx-large;
+}
+
+.deleteEntreprise{
+    margin: 5px;
+    border: 2px solid black;
+}

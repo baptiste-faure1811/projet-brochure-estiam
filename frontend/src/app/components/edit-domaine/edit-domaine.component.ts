@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Domaine, Groupe, Programme } from '../services/programmeService/programme';
-import { ProgrammeService } from '../services/programmeService/programme.service';
+import { Domaine, Groupe, Programme } from '../../services/programmeService/programme';
+import { ProgrammeService } from '../../services/programmeService/programme.service';
 
 @Component({
   selector: 'app-edit-domaine',
