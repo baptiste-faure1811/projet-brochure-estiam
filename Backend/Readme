@@ -1,0 +1,8 @@
+Pour la partie alternance on a opté pour deux interfaces au lieu d'une seule .
+  interface 1: concernance la description de l'alternance c'est à dire une 
+ image qui explique comment ça marche et un texte également en appui à cette image
+  interface 2: concerne les offres d'emploi alternaces stages. On peut voir dans
+  cette interface toutes les offres disponibles des entreprises partenaires
+
+Access-Control-Allow-Origin permet au backend d'accepter les requetes du front
+comme les deux sont sur des ports differents pour créer un environnement homogène
