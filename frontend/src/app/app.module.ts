@@ -18,7 +18,7 @@ import { CreateDomaineComponent } from './components/create-domaine/create-domai
 import { EditDomaineComponent } from './components/edit-domaine/edit-domaine.component';
 import { EditCoursComponent } from './components/edit-cours/edit-cours.component';
 import { CreateCoursComponent } from './components/create-cours/create-cours.component';
-import { AdminLogInComponent } from './admin-log-in/admin-log-in.component';
+import { AdminLogInComponent } from './components/admin-log-in/admin-log-in.component';
 import { PaiementComponent } from './components/paiement/paiement.component';
 import { PaiementDetailsComponent } from './components/paiement-details/paiement-details.component';
 import { PaiementCreationComponent } from './components/paiement-creation/paiement-creation.component';

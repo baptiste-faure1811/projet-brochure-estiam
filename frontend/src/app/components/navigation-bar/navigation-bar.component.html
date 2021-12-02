@@ -21,6 +21,9 @@
                     <a class="nav-link" href="#">Page 4</a>
                 </li>
             </ul>
+            <button *ngIf="isAdmin == 'true'" class="ms-auto" (click)="disconnectUser()">Déconnexion</button>
+            <button *ngIf="isAdmin == 'false'" class="ms-auto" routerLink="/admin-log-in">Connexion</button>
+            <!-- <button *ngIf="isAdmin == 'false'" >Déconnexion</button> -->
         </div>
     </div>
 </nav>

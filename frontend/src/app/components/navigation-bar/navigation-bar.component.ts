@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+  isAdmin = this.cookieService.get('isAdmin') ?? "false";
+
+  constructor(
+    private userService: UserService,
+    private cookieService: CookieService) {
+    
+  }
 
   ngOnInit(): void {
+  }
+
+  disconnectUser(): void {
+      window.location.reload();
+      this.cookieService.set('isAdmin', "false");
   }
 
 }

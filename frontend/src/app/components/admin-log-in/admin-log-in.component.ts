@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../services/userService/user.service';
+import { UserService } from '../../services/userService/user.service';
 
 @Component({
   selector: 'app-admin-log-in',
@@ -36,6 +36,11 @@ export class AdminLogInComponent implements OnInit {
       this.router.navigateByUrl('/admin-log-in/1');
       this.cookieService.set('isAdmin', "false");
     })
+  }
+
+  disconnectUser(): void {
+    this.router.navigateByUrl('/');
+    this.cookieService.set('isAdmin', "false");
   }
 
 }
