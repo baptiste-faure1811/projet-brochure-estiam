@@ -8,5 +8,19 @@ services:
     working_dir: /app
     volumes:
       - ".:/app"
+    network:
+      - web
     ports:
       - "4200:4200"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.services.frontend.loadbalancer.server.port=4200"
+      - "traefik.http.routers.frontend.rule=Host(`estiam.data2ia.dev`)"
+      - "traefik.http.routers.frontend.tls.domains[0].main=estiam.data2ia.dev"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
+
+networks:
+  webs:
+    external: true
