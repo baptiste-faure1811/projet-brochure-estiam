@@ -38,9 +38,4 @@ export class AdminLogInComponent implements OnInit {
     })
   }
 
-  disconnectUser(): void {
-    this.router.navigateByUrl('/');
-    this.cookieService.set('isAdmin', "false");
-  }
-
 }
