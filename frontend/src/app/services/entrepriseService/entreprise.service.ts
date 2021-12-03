@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { map } from "rxjs/operators";
 import { Entreprise } from "./entreprise";
 import { Observable, Subject } from "rxjs";
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { Observable, Subject } from "rxjs";
 export class EntrepriseService {
 
   private entreprises: Entreprise[] = [];
-  readonly url = "http://localhost:3000/entreprises";
+  readonly url = environment.host + "/entreprises";
 
   constructor(private http: HttpClient) {}
 

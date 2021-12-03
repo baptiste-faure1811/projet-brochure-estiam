@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Ioffrealternance } from './offrealternance'
 import { Idescalternance } from './descalternance';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +11,8 @@ export class Alternanceservice {
 
       private offrealternance: Ioffrealternance[]=[]
       private desc:string[]=[]
-      readonly url="http://localhost:3000/alternance/offres"
-      readonly url1="http://localhost:3000/alternance/descalternance"
+      readonly url= environment.host + "/alternance/offres"
+      readonly url1= environment.host + "/alternance/descalternance"
 
       constructor(private htppclient: HttpClient){
 

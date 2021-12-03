@@ -3,6 +3,7 @@ import { User } from "./user";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { HttpClientModule } from '@angular/common/http';
 import { Observable, Subject } from "rxjs";
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserService {
   // Pogrammes
   checkUser(email: String, password: String): Observable<Response> {
     var userData = { email: email, password: password};
-    return this.http.post<Response>("http://localhost:3000/user", userData);
+    return this.http.post<Response>(environment.host + "/user", userData);
   }
 
 }

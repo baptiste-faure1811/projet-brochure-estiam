@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Paiement } from "./paiement";
 import { Observable, Subject, of} from "rxjs";
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PaiementService {
 
   private Paiements: Paiement[] = [];
   private paiements$ = new Subject<Paiement[]>();
-  readonly url = "http://localhost:3000/paiements";
+  readonly url = environment.host + "/paiements";
 
   constructor(private http: HttpClient) {}
 
