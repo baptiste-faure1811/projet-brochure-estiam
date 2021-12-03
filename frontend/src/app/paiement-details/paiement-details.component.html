@@ -1,0 +1,51 @@
+<div *ngIf="paiement">
+    <h2>Exemple</h2>
+    <p>nom :</p>
+    <input id="nom-exemple" [(ngModel)]="paiement.exemple.nom" placeholder={{paiement.exemple.nom}}/>
+    <br>
+    <p>info :</p>
+    <input id="info-exemple" [(ngModel)]="paiement.exemple.info" placeholder={{paiement.exemple.info}}/>
+    <hr>
+    <h2>Prix Annuel</h2>
+    <p>titre :</p>
+    <input id="titre-prixAnnuel" [(ngModel)]="paiement.prixAnnuel.titre" placeholder={{paiement.prixAnnuel.titre}}/>
+    <br>
+    <p>prix :</p>
+    <input id="prix-prixAnnuel" [(ngModel)]="paiement.prixAnnuel.prix" placeholder={{paiement.prixAnnuel.prix}}/>
+    <br>
+    <p>details :</p>
+    <input id="details-prixAnnuel" [(ngModel)]="paiement.prixAnnuel.details" placeholder={{paiement.prixAnnuel.details}}/>
+    <hr>
+    <h2>Frais Mobilite</h2>
+    <p>titre :</p>
+    <input id="titre-fraisMobilite" [(ngModel)]="paiement.fraisMobilite.titre" placeholder={{paiement.fraisMobilite.titre}}/>
+    <br>
+    <p>prix :</p>
+    <input id="prix-fraisMobilite" [(ngModel)]="paiement.fraisMobilite.prix" placeholder={{paiement.fraisMobilite.prix}}/>
+    <br>
+    <p>details :</p>
+    <input id="details-fraisMobilite" [(ngModel)]="paiement.fraisMobilite.details" placeholder={{paiement.fraisMobilite.details}}/>
+    <hr>
+    <h2>Frais Mobilite International</h2>
+    <p>titre :</p>
+    <input id="titre-fraisMobilite-International" [(ngModel)]="paiement.fraisMobiliteInternational.titre" placeholder={{paiement.fraisMobiliteInternational.titre}}/>
+    <br>
+    <p>prix :</p>
+    <input id="prix-fraisMobilite-International" [(ngModel)]="paiement.fraisMobiliteInternational.prix" placeholder={{paiement.fraisMobiliteInternational.prix}}/>
+    <br>
+    <p>details :</p>
+    <input id="details-fraisMobilite-International" [(ngModel)]="paiement.fraisMobiliteInternational.details" placeholder={{paiement.fraisMobiliteInternational.details}}/>
+    <hr>
+    <h2>PaiementEchelonne</h2>
+    <p>titre :</p>
+    <input id="titre-paiementEchelonne" [(ngModel)]="paiement.paiementEchelonne.titre" placeholder={{paiement.paiementEchelonne.titre}}/>
+    <br>
+    <p>prix :</p>
+    <input id="prix-paiementEchelonne" [(ngModel)]="paiement.paiementEchelonne.prix" placeholder={{paiement.paiementEchelonne.prix}}/>
+    <br>
+    <p>details :</p>
+    <input id="details-paiementEchelonne" [(ngModel)]="paiement.paiementEchelonne.details" placeholder={{paiement.paiementEchelonne.details}}/>
+    <hr>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+  </div>
