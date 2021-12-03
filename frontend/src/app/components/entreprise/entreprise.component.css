@@ -2,7 +2,7 @@
 .buttonPaiement, button {
     background-color: #0099E6;
     border: none;
-    
+    border-radius: 4px;
     padding: 7px 10px;
     text-align: center;
     text-decoration: none;
@@ -29,5 +29,11 @@
 
 .deleteEntreprise{
     margin: 5px;
-    border: 2px solid black;
+}
+
+
+button:hover{
+    background-color: #004080;
+    color: white;
+    
 }
