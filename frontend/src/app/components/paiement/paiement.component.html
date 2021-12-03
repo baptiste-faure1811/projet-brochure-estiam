@@ -1,8 +1,7 @@
-<div *ngIf="true">
-	<h1>Quel budget
-      pour étudier à Éstiam ?</h1>
-	<br>
+
 	<div class="container">
+		<h1 class="fw-bold mt-5 text-lg-start text-md-end text-center">Quel budget
+			pour étudier à Éstiam ?</h1>
 		<div class="row row-flex" *ngFor="let paiement of paiements">
 			<div class="col-md-3">
 				<div class="card mb-4 box-shadow h-100">
@@ -70,7 +69,6 @@
                </a>
 			</div>
 			<hr>
-		</div>
 	</div> <a class="buttonPaiement" routerLink="/paiement-creation" *ngIf="true">
    Créer
    </a>
