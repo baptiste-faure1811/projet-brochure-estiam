@@ -22,5 +22,5 @@ services:
       - "traefik.http.routers.frontend.tls.certresolver=myhttpchallenge"
 
 networks:
-  webs:
+  web:
     external: true
