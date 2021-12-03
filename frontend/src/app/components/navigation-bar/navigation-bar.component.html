@@ -12,13 +12,24 @@
                     <a class="nav-link" routerLink="/programmes">Programmes et diplômes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/paiement">Tarif</a>
+                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Alternance </a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/alternance">comment ça marche</a></li>
+                        <li><a routerLink="/offres">offre d'emploi <br>
+                            alternances et stages</a> </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/entreprises">Entreprises</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Page 4</a>
+                    <a class="nav-link" routerLink="">Campus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/paiement">Tarif</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="">Formulaire</a>
                 </li>
             </ul>
             <button *ngIf="isAdmin == 'true'" class="ms-auto" (click)="disconnectUser()">Déconnexion</button>
