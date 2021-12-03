@@ -4,7 +4,7 @@ services:
     hostname: frontend
     container_name: frontend
     image: alexsuch/angular-cli:12.2.10
-    command: npm install && ng serve --host=0.0.0.0 --watch=false --live-reload=false
+    command: .docker/entrypoint.sh
     working_dir: /app
     volumes:
       - ".:/app"
