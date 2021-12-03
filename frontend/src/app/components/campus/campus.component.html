@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+body {
+  font-family: Georgia, "Times New Roman",
+            Times, serif;
+}
+h1 {
+  font-family: Helvetica, Arial,
+         sans-serif 
+}
+    
+    </style>
+  
+</head>
+<body>
+  <div id="entete" class=" container" style="width: auto;"> 
+    <h1 id="titre">Les Campus Estiam En France</h1>
+  </div>
+  <div class="container">
+    <button type="button" class="btn btn-primary" routerLink="/formulaire">Ajouter un Campus</button> 
+    <button type="button" class="btn btn-primary mx-3" routerLink="/formmodification">Modifier un Campus</button> 
+  </div><br>
+  
+ <div class="container">
+<div class="row" >
+  <div id="card" class="card" style="width: 18rem;" *ngFor="let campus of lescampus">
+    <img class="card-img-top" src="{{campus.image}}" >
+    <div class="card-body">
+      <h5 class="card-title text-white">{{campus.name}}</h5> 
+      <p class="card-text">{{campus.infos}}</p>
+      <p id="adresse" class="card-text"> {{campus.adresse}}</p>   
+      
+      <button type="button" class="btn btn-primary" onclick="location.reload()" (click)="deleteCampus(campus)" >         
+        Supprimer
+      </button> 
+    </div>
+  </div>
+</div>
+</div>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

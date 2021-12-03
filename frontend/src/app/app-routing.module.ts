@@ -19,7 +19,9 @@ import { CudComponent } from './components/cud/cud.component';
 import { CuddescComponent } from './components/cuddesc/cuddesc.component';
 import { OffrealternanceComponent } from './components/offrealternance/offrealternance.component';
 import { DescalternanceComponent } from './components/descalternance/descalternance.component';
-
+import { FormulaireComponent } from './components/formulaire/formulaire.component';
+import { CampusComponent } from './components/campus/campus.component';
+import { FormmodificationComponent } from './components/formmodification/formmodification.component';
 
 const routes: Routes = [
   { path: 'programmes', component: ProgrammesPageComponent },
@@ -40,7 +42,10 @@ const routes: Routes = [
   {path: 'alternance',component:DescalternanceComponent},
   {path: 'offres',component:OffrealternanceComponent},
   {path:'cud',component:CudComponent},
-  {path: 'cuddesc',component: CuddescComponent}
+  {path: 'cuddesc',component: CuddescComponent},
+  { path: 'campus', component: CampusComponent },
+  { path: 'formulaire', component: FormulaireComponent},
+  { path:'formmodification', component: FormmodificationComponent},
 ]
 
 

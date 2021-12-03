@@ -1,0 +1,32 @@
+
+<div class="container">
+    <div>
+    <select class="custom-select custom-select-lg mb-3 form-control" #selectedCampus>       
+        <option selected>Sélectionnez un campus</option>
+        <option *ngFor="let campus of lescampus" value="{{campus._id}}" >{{campus.name}},{{campus.image}},{{campus.adresse}}</option>                                 
+    </select>
+  </div>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputnewname">Nouveau nom</label>
+        <input type="texte" class="form-control" id="newName"  placeholder="Entrez le nouveau nom du campus" #newName required>
+      </div>
+      <div class="form-group">  
+        <label for="exampleInputnewimage">Nouvelle image</label>
+        <input type="texte" class="form-control" id="newImage"  placeholder="Entrez la nouvelle image du campus" #newImage required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputnewinfos">Nouvelle description</label>
+        <input type="texte" class="form-control" id="newInfos"  placeholder="Entrez la nouvelle description" #newInfos required>
+      </div>
+      <div class="form-group">  
+        <label for="exampleInputnewadresse">Nouvelle adresse</label>
+        <input type="texte" class="form-control" id="newAdresse"  placeholder="Entrez la nouvelle adresse du campus" #newAdresse required> <br>
+      </div>
+      <button type="button"  class="btn btn-outline-primary mx-3" (click)="updateCampus(newName.value, newImage.value, newInfos.value, newAdresse.value, selectedCampus.value)">
+        Modifier
+    </button>
+     
+    </form>
+  
+      </div>

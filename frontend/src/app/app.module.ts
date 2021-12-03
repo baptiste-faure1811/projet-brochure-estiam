@@ -28,6 +28,9 @@ import { CuddescComponent } from './components/cuddesc/cuddesc.component';
 import { OffrealternanceComponent } from './components/offrealternance/offrealternance.component';
 import { DescalternanceComponent } from './components/descalternance/descalternance.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FormulaireComponent } from './components/formulaire/formulaire.component';
+import { FormmodificationComponent } from './components/formmodification/formmodification.component';
+import { CampusComponent } from './components/campus/campus.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     CudComponent,
     CuddescComponent,
     NavBarComponent,
+    CampusComponent,
+    FormulaireComponent,
+    FormmodificationComponent,
   ],
   imports: [
     BrowserModule,

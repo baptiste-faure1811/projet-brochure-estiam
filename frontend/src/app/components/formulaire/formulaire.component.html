@@ -1,0 +1,26 @@
+
+
+    <div class="container ">
+        
+            
+        <form>
+          <div class="mb-3">    
+            <label for="newcampusname" class="form-label">Nom du Campus</label>
+            <input type="text" class="form-control" id="name1"  placeholder="Entrez le nom du Campus" #name1 required>
+          </div>
+          <div class="mb-3">
+              <label for="newcampusimage" class="form-label">Image</label>
+              <input type="text" class="form-control" id="image1"  placeholder="url de l'image" #image1 required>
+            </div>
+            <div class="mb-3">
+              <label for="newcampusinfos" class="form-label">Informations</label>
+              <textarea class="form-control" id="infos1" rows="3" placeholder="Description du Campus" #infos1 required></textarea>
+          </div>
+          <div class="mb-3">
+              <label for="newcampusadresse" class="form-label">adresse</label>
+              <input type="text" class="form-control" id="adresse1"  placeholder="Entrez l'adresse du Campus" #adresse1 required>
+            </div>
+          <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/'" (click)="addCampus(name1.value, image1.value, infos1.value, adresse1.value)">Enregistrer</button> 
+        </form>
+        
+          </div>
