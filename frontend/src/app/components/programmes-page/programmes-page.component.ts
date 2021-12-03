@@ -17,7 +17,6 @@ export class ProgrammesPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProgrammes();
-    console.log("isAdmin: " + this.isAdmin)
   }
 
   getAllProgrammes(): void {

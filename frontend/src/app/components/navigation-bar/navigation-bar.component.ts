@@ -14,7 +14,6 @@ export class NavigationBarComponent implements OnInit {
   constructor(
     private userService: UserService,
     private cookieService: CookieService) {
-    
   }
 
   ngOnInit(): void {
