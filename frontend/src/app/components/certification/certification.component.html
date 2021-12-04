@@ -1,0 +1,22 @@
+<div  class="container" > 
+  <h1 id="titre">Les certifications préparées</h1>
+</div>
+
+  <div class="container">
+    <button class="btn-certif" routerLink="/certification-creation">Ajouter une certification</button> 
+    <button class="btn-certif" routerLink="/certification-modif">Modifier une certification</button> 
+  </div>
+<div class="container">
+<div class="row">
+<div id="card" class="card text-white mb-4" style="max-width: 18rem;" *ngFor="let certification of certifications">
+  <div class="card-body">
+    <h5 class="card-title">{{certification.name}}</h5>
+  </div>
+  <button type="button" class="btn-delete" onclick="location.reload()" (click)="deleteCertification(certification)" >         
+    Supprimer
+  </button> 
+</div>
+</div>
+</div>
+
+

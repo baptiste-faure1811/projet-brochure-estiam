@@ -9,10 +9,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav md-ms-0 ps-2">
                 <li class="nav-item active">
-                    <a class="nav-link" routerLink="/programmes">Programmes et diplômes</a>
+                    <a class="nav-link dropdown-toggle" routerLink="/programmes" data-bs-toggle="dropdown">Programmes et diplômes</a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/programmes">Programmes et diplômes</a></li>
+                        <li><a routerLink="/certification">Certification<br></a> </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " routerLink="/alternance"> Alternance </a>
+                <li class="nav-item ">
+                    <a class="nav-link dropdown-toggle" routerLink="/alternance" data-bs-toggle="dropdown"> Alternance </a>
                     <ul class="dropdown-menu">
                         <li><a routerLink="/alternance">Comment ça marche</a></li>
                         <li><a routerLink="/offres">Offres d'emploi <br>

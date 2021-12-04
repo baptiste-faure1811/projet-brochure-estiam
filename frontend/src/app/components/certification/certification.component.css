@@ -1,0 +1,31 @@
+#card{
+    margin: 3rem;
+    background-color:#0099E6;
+    padding: 10px;
+}
+
+.btn-certif {
+    background-color: #0099E6;
+    margin: 2%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
+.btn-delete{
+    background-color: #004080;
+    margin: 2%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+}

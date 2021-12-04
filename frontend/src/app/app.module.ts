@@ -32,6 +32,9 @@ import { FormulaireComponent } from './components/formulaire/formulaire.componen
 import { FormmodificationComponent } from './components/formmodification/formmodification.component';
 import { CampusComponent } from './components/campus/campus.component';
 import { HomeComponent } from './components/home/home.component';
+import { CertificationCreationComponent } from './components/certification-creation/certification-creation.component';
+import { CertificationModifComponent } from './components/certification-modif/certification-modif.component';
+import { CertificationComponent } from './components/certification/certification.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { HomeComponent } from './components/home/home.component';
     FormulaireComponent,
     FormmodificationComponent,
     HomeComponent,
+    CertificationCreationComponent,
+    CertificationModifComponent,
+    CertificationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<div class="container">
+    <div>
+    <select class="custom-select custom-select-lg mb-3 form-control" #selectedCertification>       
+        <option selected>Sélectionnez une certification</option>
+        <option *ngFor="let certification of certifications" value="{{certification._id}}" >{{certification.name}}</option>                                 
+    </select>
+  </div>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputnewname">Nouvelle certification</label>
+        <input type="texte" class="form-control" id="newName"  placeholder="Entrez le nouveau nom de la certification" #newName required>
+      </div> <br>
+      <div>
+      <button type="button" onclick="window.location.href='/certification'" class="btn btn-primary mx-3" (click)="updateCertification(newName.value, selectedCertification.value)">
+        Modifier
+    </button>
+  </div>
+    </form>
+  
+      </div>

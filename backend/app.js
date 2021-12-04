@@ -10,7 +10,7 @@ const coursRoutes = require('./routes/cours.route');
 const userRoutes = require('./routes/user-log-in.route');
 const paiementRoutes = require('./routes/paiement.route')
 const routesoffrealternance=require('./routes/alternance.route')
-const certifRoutes=require('./routes/certif.routes')
+const certificationRoutes = require('./routes/certification.route');
 const campusRoutes = require('./routes/campus.route');
 
 const server = require('./server');
@@ -19,7 +19,7 @@ server.use(express.urlencoded({
     extended: true
 }))
 
-server.use('/certification',certifRoutes);
+server.use('/certifications', certificationRoutes);
 server.use('/entreprises', entrepriseRoutes);
 server.use('/programmes', programmeRoutes);
 server.use('/groupes', groupeRoutes);

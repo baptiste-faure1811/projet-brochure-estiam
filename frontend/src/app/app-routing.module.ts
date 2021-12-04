@@ -23,6 +23,9 @@ import { FormulaireComponent } from './components/formulaire/formulaire.componen
 import { CampusComponent } from './components/campus/campus.component';
 import { FormmodificationComponent } from './components/formmodification/formmodification.component';
 import { HomeComponent } from './components/home/home.component';
+import { CertificationComponent } from './components/certification/certification.component';
+import { CertificationModifComponent } from './components/certification-modif/certification-modif.component';
+import { CertificationCreationComponent } from './components/certification-creation/certification-creation.component';
 
 const routes: Routes = [
   { path: 'programmes', component: ProgrammesPageComponent },
@@ -48,6 +51,9 @@ const routes: Routes = [
   { path: 'formulaire', component: FormulaireComponent},
   { path:'formmodification', component: FormmodificationComponent},
   { path:'', component: HomeComponent},
+  {path:'certification',component: CertificationComponent},
+  {path:'certification-modif', component: CertificationModifComponent},
+  {path:'certification-creation', component: CertificationCreationComponent}
 ]
 
 
