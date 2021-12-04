@@ -6,7 +6,7 @@ const r2 = require('r2');
 module.exports.getGroupes = async (req, res) => {
 
     // Get hostname
-    const hostname = req.headers.host+"/api";
+    const hostname = req.headers.host;
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -43,7 +43,7 @@ module.exports.getGroupes = async (req, res) => {
 module.exports.getGroupe = async (req, res) => {
 
   // Get hostname
-  const hostname = req.headers.host+"/api";
+  const hostname = req.headers.host;
     
   // Set headers
   res.setHeader("Access-Control-Allow-Origin","*");
@@ -94,7 +94,7 @@ module.exports.getGroupe = async (req, res) => {
 module.exports.getGroupeByProgrammeID = async (req, res) => {
 
   // Get hostname
-  const hostname = req.headers.host+"/api";
+  const hostname = req.headers.host;
     
   // Set headers
   res.setHeader("Access-Control-Allow-Origin","*");
@@ -233,7 +233,7 @@ module.exports.deleteGroupe = async (req, res) => {
     // Check cascade delete
     const cascadeDelete = req.query.cascadeDelete === 'true';
     if (cascadeDelete) {
-        const hostname = req.headers.host+"/api";
+        const hostname = req.headers.host;
         try {
             // 1. Get groupe
             let groupe = await r2("http://" + hostname + "/groupes/" + id + "?showDetails=true").json

@@ -6,7 +6,7 @@ const r2 = require('r2');
 module.exports.getProgrammes = async (req, res) => {
 
     // Get hostname
-    const hostname = req.headers.host+"/api";
+    const hostname = req.headers.host;
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
     res.setHeader('Content-Type', 'application/json');
@@ -42,7 +42,7 @@ module.exports.getProgrammes = async (req, res) => {
 module.exports.getProgramme = async (req, res) => {
 
     // Get hostname
-    const hostname = req.headers.host+"/api";
+    const hostname = req.headers.host;
       
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -100,7 +100,7 @@ module.exports.getProgrammeByYear = async (req, res) => {
         res.send("Please provide a valid year.");
         return;
     }
-    const hostname = req.headers.host+"/api";
+    const hostname = req.headers.host;
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -212,7 +212,7 @@ module.exports.deleteProgramme = async (req, res) => {
     // Check cascade delete
     const cascadeDelete = req.query.cascadeDelete === 'true';
     if (cascadeDelete) {
-        const hostname = req.headers.host+"/api";
+        const hostname = req.headers.host;
         try {
             // 1. Get programme
             let programme = await r2("http://" + hostname + "/programmes/" + id + "?showDetails=true").json
