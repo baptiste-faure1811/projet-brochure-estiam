@@ -10,7 +10,6 @@ services:
       - ".:/app"
     networks:
       - web
-      - core
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
@@ -22,23 +21,6 @@ services:
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
 
-  mongo:
-    hostname: mongo
-    container_name: mongo
-    image: mongo
-    restart: always
-    networks:
-      - core
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - "27017:27017"
-    volumes:
-      - db_mongo:/data/db
-
 networks:
   web:
-    external: true
-  core:
     external: true
