@@ -1,5 +1,5 @@
 <br>
-<div class="container">
+<div *ngIf="isAdmin == 'true'" class="container">
         <button style="maring-left: 32px;"type="button" routerLink="/cud" 
            data-bs-toggle="button" autocomplete="off" class="btn-offre">
            Créer supprimer modifier une offre

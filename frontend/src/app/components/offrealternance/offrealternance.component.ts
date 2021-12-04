@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Alternanceservice } from '../../services/alternanceService/alternance.service';
 import { Ioffrealternance } from '../../services/alternanceService/offrealternance';
 
@@ -12,7 +13,8 @@ export class OffrealternanceComponent implements OnInit {
   simlpeuser:boolean=false
   public offrealternances: Ioffrealternance[]=[];
   desc: string[]=[]
-  constructor(private offrealternanceservice: Alternanceservice) { }
+  isAdmin = this.cookieService.get('isAdmin');
+  constructor(private offrealternanceservice: Alternanceservice,private cookieService: CookieService) { }
   
   ngOnInit(): void {
     this.Ongetoffrealternance();
