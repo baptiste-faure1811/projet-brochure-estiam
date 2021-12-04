@@ -3,14 +3,14 @@
         <fieldset>
             <legend style="color: slateblue;">Creation</legend>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Url image</label>
+            <label for="exampleFormControlInput1" class="form-label">URL de l'image</label>
             <input type="text" class="form-control" id="urlimage" #url_image required>
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label"> dsecription offre</label>
+            <label for="exampleFormControlTextarea1" class="form-label">Description de l'offre</label>
             <textarea class="form-control" id="desc" rows="3" #desc required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="Onadddescalternance(url_image.value,desc.value)">SEND</button>   
+        <button type="submit" class="btn btn-primary" (click)="Onadddescalternance(url_image.value,desc.value)">Ajouter</button>   
        </fieldset>
     </form>
 </div>
@@ -31,7 +31,7 @@
                 <td>{{descalternance.image}}</td>
                 <td>{{descalternance.text}}</td>
                 <td><button type="submit" class="btn btn-outline-danger" (click)="Ondeletedescalternance(descalternance)" style="">
-                    DELETE
+                    Supprimer
                 </button></td>
                 
             </tr>
@@ -53,7 +53,7 @@
                 <textarea class="form-control" id="desc" rows="3" #desc1 required></textarea>
             </div>
                   <button type="submit" class="btn btn-secondary" (click)="Onupdatedescalternance(url_image1.value,desc1.value)" >
-                      UPDATE
+                      Modifier
                   </button>  
       </form>
       </div>

@@ -31,9 +31,11 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="">Formulaire</a>
                 </li>
+                <li>
+                    <button *ngIf="isAdmin == 'true'" class="ms-auto btn-co" (click)="disconnectUser()">Déconnexion</button>
+                    <button *ngIf="isAdmin != 'true'" class="ms-auto btn-co" routerLink="/admin-log-in">Connexion</button>
+                </li>
             </ul>
-            <button *ngIf="isAdmin == 'true'" class="ms-auto btn-co" (click)="disconnectUser()">Déconnexion</button>
-            <button *ngIf="isAdmin != 'true'" class="ms-auto btn-co" routerLink="/admin-log-in">Connexion</button>
             <!-- <button *ngIf="isAdmin == 'false'" >Déconnexion</button> -->
         </div>
     </div>
