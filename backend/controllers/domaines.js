@@ -6,7 +6,7 @@ const r2 = require('r2');
 module.exports.getDomaines = async (req, res) => {
 
     // Get hostname
-    const hostname = req.headers.host;
+    const hostname = req.headers.host+"/api";
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -43,7 +43,7 @@ module.exports.getDomaines = async (req, res) => {
 module.exports.getDomaine = async (req, res) => {
 
     // Get hostname
-    const hostname = req.headers.host;
+    const hostname = req.headers.host+"/api";
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -95,7 +95,7 @@ module.exports.getDomaine = async (req, res) => {
 module.exports.getDomainesByGroupeID = async (req, res) => {
 
     // Get hostname
-    const hostname = req.headers.host;
+    const hostname = req.headers.host+"/api";
     
     // Set headers
     res.setHeader("Access-Control-Allow-Origin","*");
@@ -233,7 +233,7 @@ module.exports.deleteDomaine = async (req, res) => {
     // Check cascade delete
     const cascadeDelete = req.query.cascadeDelete === 'true';
     if (cascadeDelete) {
-        const hostname = req.headers.host;
+        const hostname = req.headers.host+"/api";
         try {
             // 1. Get domaine
             let domaine = await r2("http://" + hostname + "/domaines/" + id + "?showDetails=true").json

@@ -4,7 +4,7 @@ services:
     hostname: frontend
     container_name: frontend
     image: alexsuch/angular-cli:12.2.10
-    command: .docker/entrypoint.sh
+    command: /app/.docker/entrypoint.sh
     working_dir: /app
     volumes:
       - ".:/app"

@@ -21,3 +21,21 @@ legend{
     background-color:#FFFFFF;
     justify-content: center;
 }
+
+.btn-offre {
+    background-color: #004080;
+    margin: 2%;
+    border: none;
+    color: white;
+    padding: 15px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .btn-offre:hover {
+    background-color: white;
+    color: #004080;
+
+  }

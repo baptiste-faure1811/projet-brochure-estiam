@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark estiamBackgroundColor">
+<nav class="navbar navbar-expand-xl navbar-dark estiamBackgroundColor">
     <div class="container md-px-5">
         <a class="navbar-brand" href="#">
             <img src="../../assets/logo-white.png" class="d-block" style="width: 170px;">
@@ -14,8 +14,8 @@
                 <li class="nav-item">
                     <a class="nav-link  dropdown-toggle" routerLink="/alternance" data-bs-toggle="dropdown"> Alternance </a>
                     <ul class="dropdown-menu">
-                        <li><a routerLink="/alternance">comment ça marche</a></li>
-                        <li><a routerLink="/offres">offre d'emploi <br>
+                        <li><a routerLink="/alternance">Comment ça marche</a></li>
+                        <li><a routerLink="/offres">Offres d'emploi <br>
                             alternances et stages</a> </li>
                     </ul>
                 </li>
@@ -31,12 +31,11 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="">Formulaire</a>
                 </li>
-                <li>
-                    <button *ngIf="isAdmin == 'true'" class="ms-auto btn-co" (click)="disconnectUser()">Déconnexion</button>
-                    <button *ngIf="isAdmin != 'true'" class="ms-auto btn-co" routerLink="/admin-log-in">Connexion</button>
-                </li>
             </ul>
             <!-- <button *ngIf="isAdmin == 'false'" >Déconnexion</button> -->
         </div>
+        <button *ngIf="isAdmin == 'true'" class="btn-co" (click)="disconnectUser()">Déconnexion</button>
+        <button *ngIf="isAdmin != 'true'" class="btn-co" routerLink="/admin-log-in">Connexion</button>
     </div>
+
 </nav>
