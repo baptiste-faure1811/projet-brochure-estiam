@@ -14,10 +14,8 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
       - "traefik.http.services.backend.loadbalancer.server.port=3000"
-      - "traefik.http.routers.backend.rule=Host(`estiam.data2ia.dev`) && PathPrefix(`/api{regex:$$|/.*}`)"
-      - "traefik.http.middlewares.backend-stripprefix.stripprefix.prefixes=/api"
-      - "traefik.http.routers.backend.middlewares=backend-stripprefix"
-      - "traefik.http.routers.backend.tls.domains[0].main=estiam.data2ia.dev"
+      - "traefik.http.routers.backend.rule=Host(`apiestiam.data2ia.dev`)"
+      - "traefik.http.routers.backend.tls.domains[0].main=apiestiam.data2ia.dev"
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
 
