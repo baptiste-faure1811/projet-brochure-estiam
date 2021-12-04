@@ -22,6 +22,7 @@ import { DescalternanceComponent } from './components/descalternance/descalterna
 import { FormulaireComponent } from './components/formulaire/formulaire.component';
 import { CampusComponent } from './components/campus/campus.component';
 import { FormmodificationComponent } from './components/formmodification/formmodification.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: 'programmes', component: ProgrammesPageComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'campus', component: CampusComponent },
   { path: 'formulaire', component: FormulaireComponent},
   { path:'formmodification', component: FormmodificationComponent},
+  { path:'', component: HomeComponent},
 ]
 
 

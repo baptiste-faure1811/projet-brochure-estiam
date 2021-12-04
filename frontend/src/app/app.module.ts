@@ -31,6 +31,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FormulaireComponent } from './components/formulaire/formulaire.component';
 import { FormmodificationComponent } from './components/formmodification/formmodification.component';
 import { CampusComponent } from './components/campus/campus.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CampusComponent } from './components/campus/campus.component';
     CampusComponent,
     FormulaireComponent,
     FormmodificationComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
