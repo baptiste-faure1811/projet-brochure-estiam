@@ -11,7 +11,7 @@ import { ProgrammeService } from '../../services/programmeService/programme.serv
 export class ProgrammesPageComponent implements OnInit {
 
   programmes: Programme[] = [];
-  isAdmin = this.cookieService.get('isAdmin') ?? "false";
+  isAdmin = this.cookieService.get('isAdmin');
 
   constructor(private programmeService: ProgrammeService, private cookieService: CookieService) { }
 

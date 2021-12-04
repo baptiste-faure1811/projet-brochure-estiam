@@ -25,7 +25,7 @@
             <h6 class="mt-4">Année {{programme.year}}</h6>
             <h3 class="fw-bold" style="color: #004080">{{programme.name}}</h3>
             <div *ngIf='true' class="d-flex flex-row justify-content-center align-items-center gap-2 mt-2 ">
-                <a href="#" routerLink="/edit-programme/{{programme._id}}" class="estiamCyanText arrowLink">Modifier ce programme</a>
+                <a *ngIf="isAdmin == 'true'" href="#" routerLink="/edit-programme/{{programme._id}}" class="estiamCyanText arrowLink">Modifier ce programme</a>
             </div>
         </div>
         <div *ngIf='programme.groupes.length <= 0' class="mt-3">
@@ -38,14 +38,14 @@
                     <h5 class="estiamCyanText m-0 p-0 ms-2">{{groupe.name}}</h5>
                 </div>
                 <div class="d-flex flex-row justify-content-end align-items-center gap-2">
-                    <a href="#" routerLink="/edit-groupe/{{groupe._id}}" class="arrowLink">Modifier ce groupe</a>
+                    <a *ngIf="isAdmin == 'true'" href="#" routerLink="/edit-groupe/{{groupe._id}}" class="arrowLink">Modifier ce groupe</a>
                 </div>
             </div>
             <div class="pb-4 px-4 pt-1 estiamBackgroundColorLight mt-2" style="border-radius: 12px;">
                 <div *ngFor="let domaine of groupe.domaines" class="d-flex flex-column">
                     <div class="d-flex flex-row justify-content-between align-items-center mt-3">
                         <p class="text-uppercase fs-6 fw-bold ms-1 p-0 m-0">{{domaine.name}}</p>
-                        <a href="#" routerLink="/edit-domaine/{{domaine._id}}" class="arrowLink m-0 p-0">Modifier ce domaine</a>
+                        <a *ngIf="isAdmin == 'true'" href="#" routerLink="/edit-domaine/{{domaine._id}}" class="arrowLink m-0 p-0">Modifier ce domaine</a>
                     </div>
                     <div *ngIf='domaine.cours.length > 0' class="d-flex flex-row row gap-3 estiamCyanText mb-2 px-3 mt-3" style="font-size: smaller;">
                         <p class="m-0 p-0 col">Intitulé</p>
@@ -53,7 +53,7 @@
                         <p class="m-0 p-0 col-2">Code ECTS</p>
                         <p class="m-0 p-0 col-1">Semestre</p>
                         <p class="m-0 p-0 col-1">Durée (h)</p>
-                        <p class="m-0 p-0 col-1 d-flex flex-row justify-content-end align-items-center">Modifier</p>
+                        <p *ngIf="isAdmin == 'true'"class="m-0 p-0 col-1 d-flex flex-row justify-content-end align-items-center">Modifier</p>
                     </div>
                     <ul class="d-flex flex-column list-group">
                         <li *ngFor="let cour of domaine.cours" class="list-group-item d-flex flex-row row gap-3"> 
@@ -62,14 +62,14 @@
                             <p class="m-0 p-0 col-2">{{cour.ECTSCode}}</p>
                             <p class="m-0 p-0 col-1">{{cour.semestre}}</p>
                             <p class="m-0 p-0 col-1">{{cour.duration}}</p>
-                            <div class="col-1 d-flex flex-row justify-content-end align-items-center">
-                                <a href="#" routerLink="/edit-cours/{{cour._id}}" class="m-0 p-0" title="Modifier ce cours">
+                            <div *ngIf="isAdmin == 'true'" class="col-1 d-flex flex-row justify-content-end align-items-center">
+                                <a  href="#" routerLink="/edit-cours/{{cour._id}}" class="m-0 p-0" title="Modifier ce cours">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0099E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                                 </a>
                             </div>
                         </li>
                     </ul>
-                    <a href="#" routerLink="/create-cours/{{domaine._id}}" class="m-0 p-0 me-3 mt-1 d-flex flex-row justify-content-end align-items-center" title="Ajouter un cours">
+                    <a *ngIf="isAdmin == 'true'" href="#" routerLink="/create-cours/{{domaine._id}}" class="m-0 p-0 me-3 mt-1 d-flex flex-row justify-content-end align-items-center" title="Ajouter un cours">
                         <p class="m-0 p-0 estiamCyanText me-2">Ajouter un cours</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0099E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                     </a>

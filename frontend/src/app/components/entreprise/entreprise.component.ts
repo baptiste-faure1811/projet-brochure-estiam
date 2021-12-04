@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Entreprise } from '../../services/entrepriseService/entreprise';
 import { EntrepriseService } from '../../services/entrepriseService/entreprise.service';
 
@@ -10,8 +11,8 @@ import { EntrepriseService } from '../../services/entrepriseService/entreprise.s
 export class EntrepriseComponent implements OnInit {
 
   entreprises: Entreprise[] = [];
-
-  constructor(private entrepriseService: EntrepriseService) { }
+  isAdmin = this.cookieService.get('isAdmin');
+  constructor(private entrepriseService: EntrepriseService,private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.getEntreprises();

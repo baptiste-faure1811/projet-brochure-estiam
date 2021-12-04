@@ -9,11 +9,11 @@
     <div class="row">
       <div class="col-md-6" *ngFor="let entreprise of entreprises" style=" justify-content: space-between; display: flex;">
         <p class="enterprise-name" style="font-size: large;">{{entreprise.name}}</p>
-        <button class="deleteEntreprise" *ngIf="true" (click)="deleteEntreprise(entreprise)" style=""> Supprimer </button>
+        <button class="deleteEntreprise" *ngIf="isAdmin == 'true'" (click)="deleteEntreprise(entreprise)" style=""> Supprimer </button>
       </div>
     </div>
     <hr>
-    <div *ngIf="true">
+    <div *ngIf="isAdmin == 'true'">
       <div>
         <h2>Ajouter une entreprise :</h2>
         <label for="new-hero">Nom de l'entreprise: </label>

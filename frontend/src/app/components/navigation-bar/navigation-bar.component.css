@@ -23,3 +23,21 @@ li{
     background-color:  #004080;
     padding: 10px;
 }
+
+.btn-co {
+    background-color: #004080;
+    margin: 2%;
+    border: none;
+    color: white;
+    padding: 15px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .btn-co:hover {
+    background-color: white;
+    color: #004080;
+
+  }

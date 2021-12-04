@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  frontend:
+    hostname: backend
+    container_name: backend
+    image: node
+    command: .docker/entrypoint.sh
+    working_dir: /app
+    volumes:
+      - ".:/app"
+    networks:
+      - web
+    ports:
+      - "4200:4200"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.services.backend.loadbalancer.server.port=4200"
+      - "traefik.http.routers.backend.rule=Host(`api.data2ia.dev`)"
+      - "traefik.http.routers.backend.tls.domains[0].main=estiam.data2ia.dev"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=myhttpchallenge"
+
+networks:
+  web:
+    external: true

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Paiement } from '../../services/paiementService/paiement';
 import { PaiementService } from '../../services/paiementService/paiement.service';
 import {Router} from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -13,10 +14,10 @@ import {Router} from '@angular/router';
 export class PaiementComponent implements OnInit {
 
   paiements: Paiement[] = [];
-
+  isAdmin = this.cookieService.get('isAdmin');
 
   constructor(private paiementService: PaiementService,
-              private router: Router,) { }
+              private router: Router, private cookieService: CookieService) { }
 
 
 
