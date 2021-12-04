@@ -3,8 +3,8 @@
 </div>
 
   <div class="container">
-    <button class="btn-certif" routerLink="/certification-creation">Ajouter une certification</button> 
-    <button class="btn-certif" routerLink="/certification-modif">Modifier une certification</button> 
+    <button *ngIf="isAdmin == 'true'" class="btn-certif" routerLink="/certification-creation">Ajouter une certification</button> 
+    <button *ngIf="isAdmin == 'true'" class="btn-certif" routerLink="/certification-modif">Modifier une certification</button> 
   </div>
 <div class="container">
 <div class="row">
@@ -12,7 +12,7 @@
   <div class="card-body">
     <h5 class="card-title">{{certification.name}}</h5>
   </div>
-  <button type="button" class="btn-delete" onclick="location.reload()" (click)="deleteCertification(certification)" >         
+  <button type="button" *ngIf="isAdmin == 'true'" class="btn-delete" onclick="location.reload()" (click)="deleteCertification(certification)" >         
     Supprimer
   </button> 
 </div>
