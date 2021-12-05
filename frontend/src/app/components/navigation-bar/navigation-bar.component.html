@@ -33,10 +33,9 @@
                     <a class="nav-link" routerLink="/paiement">Tarif</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="">Formulaire</a>
+                    <a class="nav-link" href="https://www.estiam.education/contact/" target="_blank">Contact</a>
                 </li>
             </ul>
-            <!-- <button *ngIf="isAdmin == 'false'" >Déconnexion</button> -->
         </div>
         <button *ngIf="isAdmin == 'true'" class="btn-co" (click)="disconnectUser()">Déconnexion</button>
         <button *ngIf="isAdmin != 'true'" class="btn-co" routerLink="/admin-log-in">Connexion</button>
