@@ -44,7 +44,7 @@
                     <p class="m-0 p-0 ms-2 estiamCyanText">Pour associer ce cours à un autre programme ou groupe, veuillez le supprimer puis le recréer dans le programme ou groupe souhaité.</p>
                 </div>
                 <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                    <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/'" (click)="updateCours(name.value, ectsCredits.value, ectsCode.value, oldCode.value, semestre.value, duration.value)">Enregistrer les modifications</button>
+                    <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/programmes'" (click)="updateCours(name.value, ectsCredits.value, ectsCode.value, oldCode.value, semestre.value, duration.value)">Enregistrer les modifications</button>
                     <button type="button" class="btn btn-danger mt-3" data-toggle="modal" data-target="#deleteModal">Supprimer ce cours</button>
                 </div>
             </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            <button class="btn btn-danger" onclick="window.location.href='/'" (click)="deleteCours(cours._id)">Supprimer</button>
+            <button class="btn btn-danger" onclick="window.location.href='/programmes'" (click)="deleteCours(cours._id)">Supprimer</button>
         </div>
       </div>
     </div>

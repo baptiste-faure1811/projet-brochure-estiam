@@ -14,7 +14,7 @@
 
     <div *ngIf='programmes.length != 0 && isAdmin == "true"' class="p-3 estiamBackgroundColorLight mt-4" style="border-radius: 12px;">
         <h4 class="fw-semibold text-center ">Ajoutez des éléments</h4>
-        <div class="d-flex justify-content-center align-items-center my-2 py-2">
+        <div class="d-flex flex-md-row flex-column gap-3 justify-content-center align-items-center my-2 py-2">
             <button class="btn btn-primary mx-auto" routerLink="/create-programme">Ajouter un nouveau programme</button>
             <button class="btn btn-primary mx-auto" routerLink="/create-groupe">Ajouter un nouveau groupe</button>
             <button class="btn btn-primary mx-auto" routerLink="/create-domaine">Ajouter un nouveau domaine</button>
@@ -32,7 +32,7 @@
             <p class="m-0 p-0 text-secondary fst-italic text-center">Aucun groupe n'est associé à ce programme.</p>
         </div>
         <div *ngFor="let groupe of programme.groupes" class="mt-4">
-            <div class="d-flex flex-row justify-content-between align-items-center">
+            <div class="d-flex flex-md-row flex-column justify-content-md-between justify-content-center align-items-center">
                 <div class="ms-3 d-flex flex-row justify-content-start align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="estiamCyanText" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                     <h5 class="estiamCyanText m-0 p-0 ms-2">{{groupe.name}}</h5>
@@ -43,25 +43,25 @@
             </div>
             <div class="pb-4 px-4 pt-1 estiamBackgroundColorLight mt-2" style="border-radius: 12px;">
                 <div *ngFor="let domaine of groupe.domaines" class="d-flex flex-column">
-                    <div class="d-flex flex-row justify-content-between align-items-center mt-3">
+                    <div class="d-flex flex-md-row flex-column justify-content-md-between justify-content-center align-items-center mt-3">
                         <p class="text-uppercase fs-6 fw-bold ms-1 p-0 m-0">{{domaine.name}}</p>
                         <a *ngIf="isAdmin == 'true'" routerLink="/edit-domaine/{{domaine._id}}" class="arrowLink m-0 p-0">Modifier ce domaine</a>
                     </div>
                     <div *ngIf='domaine.cours.length > 0' class="d-flex flex-row row gap-3 estiamCyanText mb-2 px-3 mt-3" style="font-size: smaller;">
                         <p class="m-0 p-0 col">Intitulé</p>
-                        <p class="m-0 p-0 col-1">Crédit ECTS</p>
-                        <p class="m-0 p-0 col-2">Code ECTS</p>
-                        <p class="m-0 p-0 col-1">Semestre</p>
-                        <p class="m-0 p-0 col-1">Durée (h)</p>
+                        <p class="m-0 p-0 col-1 d-md-block d-none">Crédit ECTS</p>
+                        <p class="m-0 p-0 col-2 d-md-block d-none">Code ECTS</p>
+                        <p class="m-0 p-0 col-md-1 col-2">Semestre</p>
+                        <p class="m-0 p-0 col-md-1 col-2">Durée (h)</p>
                         <p *ngIf="isAdmin == 'true'"class="m-0 p-0 col-1 d-flex flex-row justify-content-end align-items-center">Modifier</p>
                     </div>
                     <ul class="d-flex flex-column list-group">
                         <li *ngFor="let cour of domaine.cours" class="list-group-item d-flex flex-row row gap-3"> 
                             <p class="m-0 p-0 col">{{cour.name}}</p>
-                            <p class="m-0 p-0 col-1">{{cour.ECTSCredit}}</p>
-                            <p class="m-0 p-0 col-2">{{cour.ECTSCode}}</p>
-                            <p class="m-0 p-0 col-1">{{cour.semestre}}</p>
-                            <p class="m-0 p-0 col-1">{{cour.duration}}</p>
+                            <p class="m-0 p-0 col-1 d-md-block d-none">{{cour.ECTSCredit}}</p>
+                            <p class="m-0 p-0 col-2 d-md-block d-none">{{cour.ECTSCode}}</p>
+                            <p class="m-0 p-0 col-md-1 col-2">{{cour.semestre}}</p>
+                            <p class="m-0 p-0 col-md-1 col-2">{{cour.duration}}</p>
                             <div *ngIf="isAdmin == 'true'" class="col-1 d-flex flex-row justify-content-end align-items-center">
                                 <a routerLink="/edit-cours/{{cour._id}}" class="m-0 p-0" title="Modifier ce cours">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0099E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>

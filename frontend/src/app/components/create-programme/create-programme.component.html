@@ -20,7 +20,7 @@
                     <input required type="number" min="1" max="999" step="1" class="form-control" id="programmeDuration" #totalDuration placeholder="Saisissez la durée totale de ce programme">
                 </div>
                 <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                    <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/'" (click)="createProgramme(name.value, totalDuration.value, year.value)">Créer le programme</button>
+                    <button type="submit" class="btn btn-primary mt-3" onclick="window.location.href='/programmes'" (click)="createProgramme(name.value, totalDuration.value, year.value)">Créer le programme</button>
                 </div>
             </div>
         </form>
