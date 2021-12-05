@@ -3,7 +3,9 @@
 
     <h2 class="text-center fs-1 fw-bold">Bienvenue dans votre école informatique et du numérique</h2>
     <p class="text-center fs-5">Parcourez cette brochure pour en découvrir plus sur l'ESTIAM et ses cursus.</p>
-    
+    <div *ngIf="isAdmin == 'true'"class="alert alert-warning text-center w-auto mx-auto mx-5" role="alert">
+      Vous êtes connecté en tant qu'administrateur.
+    </div>
     <div class="my-5">
       <p class="fw-bold fs-4">Accès rapide</p>
       <div class="row gap-3">

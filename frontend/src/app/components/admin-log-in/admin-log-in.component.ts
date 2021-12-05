@@ -25,8 +25,8 @@ export class AdminLogInComponent implements OnInit {
   checkCredentials(email: String, password: String): void {
     this.userService.checkUser(email, password).subscribe(response => {
       if (response.authentification == true) {
-        this.router.navigateByUrl('/');
         this.cookieService.set('isAdmin', "true");
+        this.router.navigateByUrl('');
       } else {
         this.router.navigateByUrl('/admin-log-in/1');
         this.cookieService.set('isAdmin', "false");

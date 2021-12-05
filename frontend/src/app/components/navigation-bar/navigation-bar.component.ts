@@ -8,7 +8,8 @@ import { UserService } from 'src/app/services/userService/user.service';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
-  isAdmin:string;
+
+  isAdmin = this.cookieService.get('isAdmin');
 
   constructor(
     private userService: UserService,
@@ -16,13 +17,12 @@ export class NavigationBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isAdmin = this.cookieService.get('isAdmin');
-    console.log("cookie : "+(typeof this.isAdmin))
   }
 
   disconnectUser(): void {
-      window.location.reload();
       this.cookieService.set('isAdmin', "false");
+      this.isAdmin = 'false';
+      window.location.reload();
   }
 
 }

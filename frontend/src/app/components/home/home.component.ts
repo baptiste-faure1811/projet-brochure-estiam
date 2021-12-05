@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   slideIndex:number = 1;
+  isAdmin = this.cookieService.get('isAdmin');
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.showSlides(this.slideIndex);
