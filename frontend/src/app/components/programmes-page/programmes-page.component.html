@@ -15,9 +15,9 @@
     <div *ngIf='programmes.length != 0 && isAdmin == "true"' class="p-3 estiamBackgroundColorLight mt-4" style="border-radius: 12px;">
         <h4 class="fw-semibold text-center ">Ajoutez des éléments</h4>
         <div class="d-flex flex-md-row flex-column gap-3 justify-content-center align-items-center my-2 py-2">
-            <button class="btn btn-primary mx-auto" routerLink="/create-programme">Ajouter un nouveau programme</button>
-            <button class="btn btn-primary mx-auto" routerLink="/create-groupe">Ajouter un nouveau groupe</button>
-            <button class="btn btn-primary mx-auto" routerLink="/create-domaine">Ajouter un nouveau domaine</button>
+            <button class="btn estiamBackgroundColor text-light mx-auto" routerLink="/create-programme">Ajouter un nouveau programme</button>
+            <button class="btn estiamBackgroundColor text-light mx-auto" routerLink="/create-groupe">Ajouter un nouveau groupe</button>
+            <button class="btn estiamBackgroundColor text-light mx-auto" routerLink="/create-domaine">Ajouter un nouveau domaine</button>
         </div>
     </div>
     <div class="my-5" *ngFor="let programme of programmes">
